@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Inter, Noto_Sans_KR, Space_Grotesk } from "next/font/google";
+import { Analytics } from '@vercel/analytics/next';
 
 import "./globals.css";
 import "./styles/sunset-theme.css";
@@ -58,6 +59,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="min-h-full flex flex-col antialiased">{children}</body>
+      <Analytics />
     </html>
   );
 }
