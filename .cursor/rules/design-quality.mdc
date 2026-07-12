@@ -1,0 +1,58 @@
+---
+description: SUNSET visual identity and anti-generic design constraints
+globs:
+  - "src/**/*.tsx"
+  - "src/**/*.css"
+  - "app/**/*.tsx"
+  - "app/**/*.css"
+alwaysApply: false
+---
+
+# Design Quality Rules
+
+Before significant UI work, read `docs/DESIGN_SYSTEM.md`.
+
+The visual concept is:
+
+> After-class engineering at sunset.
+
+The site must feel like an editorial engineering archive, not a SaaS template.
+
+Prioritize:
+
+- real project media;
+- verified system diagrams;
+- typography;
+- asymmetric editorial composition;
+- technical rules and labels;
+- restrained sunset accents;
+- project-specific visual logic;
+- honest status and limitations.
+
+Avoid:
+
+- glowing gradient blobs;
+- glassmorphism;
+- excessive cards;
+- universal bento grids;
+- giant centered headline with a pill above it;
+- fake browser windows;
+- fake terminals;
+- random 3D objects;
+- technology marquees;
+- fake metrics;
+- meaningless motion;
+- excessive `rounded-3xl`;
+- startup copy;
+- stock imagery;
+- AI-generated project imagery.
+
+Motion must explain state, hierarchy, or system flow and respect reduced motion.
+
+At 320 px, 390 px, 768 px, 1024 px, and 1440 px:
+
+- no horizontal overflow;
+- no clipped headings;
+- readable Korean;
+- usable filters;
+- intentional mobile composition.

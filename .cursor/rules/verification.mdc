@@ -1,0 +1,56 @@
+---
+description: SUNSET testing, accessibility, browser QA, and completion rules
+globs:
+  - "tests/**/*"
+  - "playwright.config.*"
+  - "docs/IMPLEMENTATION_STATUS.md"
+  - "docs/IMPLEMENTATION_REPORT.md"
+alwaysApply: false
+---
+
+# Verification Rules
+
+Do not claim a check passed unless it was run and observed.
+
+Required final commands:
+
+```bash
+pnpm install --frozen-lockfile
+pnpm lint
+pnpm typecheck
+pnpm build
+pnpm test:e2e
+pnpm start
+```
+
+Use Playwright against the production server.
+
+Required test areas:
+
+- routes;
+- localization;
+- path-preserving language switch;
+- mobile navigation;
+- project search and filters;
+- excluded-repository absence;
+- combined NaeonAir/WisDrone page;
+- metadata;
+- console errors;
+- asset failures;
+- responsive overflow;
+- accessibility.
+
+Use `@axe-core/playwright` on representative English/Korean pages and flagship projects.
+
+Fix all serious and critical violations.
+
+Capture and review the screenshots required by `docs/IMPLEMENTATION_PLAN.md`.
+
+Update:
+
+- `docs/IMPLEMENTATION_STATUS.md` after every phase;
+- `docs/IMPLEMENTATION_REPORT.md` with actual final evidence.
+
+If Lighthouse or another tool cannot run, document unavailability. Never invent results.
+
+Do not call the website production-ready without build, tests, accessibility review, responsive browser inspection, and documented limitations.

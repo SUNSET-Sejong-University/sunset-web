@@ -1,0 +1,21 @@
+---
+description: Persistent SUNSET product, factual-integrity, and workflow rules
+alwaysApply: true
+---
+
+# SUNSET Core Rules
+
+- Read `AGENTS.md` before substantial work.
+- Read `docs/IMPLEMENTATION_STATUS.md` before deciding what to do next.
+- Follow the active phase in `docs/IMPLEMENTATION_PLAN.md`.
+- Use `docs/PRODUCT_SPEC.md` as the product source of truth.
+- Use `docs/REPOSITORY_AUDIT.md` before writing any project claim.
+- Use `docs/DESIGN_SYSTEM.md` before significant UI work.
+- Follow `docs/CODEBASE_CONVENTIONS.md` for production naming, directories, and module boundaries.
+- Update `docs/IMPLEMENTATION_STATUS.md` after every phase, interruption, major decision, or failed verification.
+- Never invent project facts, roles, dates, awards, metrics, media, deployment status, or official university affiliation.
+- Never copy or expose credentials, tokens, passwords, private IP addresses, or private email addresses.
+- SUNSET is an independent student engineering collective formed by students at Sejong University.
+- Do not imply official university endorsement without formal proof.
+- Do not stop after the first render or first successful build.
+- Before completion, run every required check and complete `docs/IMPLEMENTATION_REPORT.md`.

@@ -1,0 +1,29 @@
+---
+description: SUNSET Next.js, TypeScript, localization, and dependency architecture
+globs:
+  - "src/**/*.{ts,tsx}"
+  - "app/**/*.{ts,tsx}"
+  - "next.config.*"
+  - "package.json"
+alwaysApply: false
+---
+
+# Frontend Architecture Rules
+
+- Use Next.js App Router.
+- Server Components are the default.
+- Keep Client Components limited to genuine interaction.
+- Do not place `"use client"` on root layouts, full pages, static content sections, or footers.
+- Keep content local, typed, readonly, and build-time validated.
+- Use strict TypeScript. No `any`, `@ts-ignore`, blind assertions, or broad lint disables.
+- Use `satisfies` for content collections.
+- Use path-based `en` and `ko` locale routing.
+- Use static dictionary imports and `generateStaticParams()`.
+- Language switching must preserve equivalent paths and project slugs.
+- Do not add a database, CMS, runtime GitHub API, authentication, analytics, or unnecessary backend.
+- Approved UI stack: Tailwind CSS v4, Motion for React, Lucide React.
+- Do not add shadcn/ui, Radix, Material UI, Chakra, Bootstrap, another animation library, another icon library, carousel package, Three.js, or particles without documenting an unavoidable reason.
+- Use Motion with `LazyMotion`, `domAnimation`, `strict`, and `MotionConfig reducedMotion="user"`.
+- Use named Lucide imports.
+- Use `next/image` and `next/font`.
+- Avoid unnecessary `useEffect`.

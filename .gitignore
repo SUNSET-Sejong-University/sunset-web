@@ -36,6 +36,34 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Internal AI/Cursor workflow and local QA artifacts
+CURSOR_KICKOFF_PROMPT.md
+CURSOR_CLAUDE_PARITY_PROMPT.md
+REPOSITORY_CLEANUP_RECOMMENDATIONS.md
+CLAUDE.md
+MANIFEST.json
+docs/CURSOR_WORKFLOW.md
+docs/IMPLEMENTATION_STATUS.md
+docs/IMPLEMENTATION_REPORT.md
+docs/REDESIGN_AUDIT.md
+docs/CLAUDE_REFERENCE_IMPLEMENTATION.md
+docs/design-reference/
+artifacts/
+test-results/
+playwright-report/
+playwright/.cache/
+*.log
+*.tmp
+*.bak
+*.local.md
+*-screenshots/
+screenshots/
+
+# Cursor IDE — keep shared rules; ignore other local IDE state
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
