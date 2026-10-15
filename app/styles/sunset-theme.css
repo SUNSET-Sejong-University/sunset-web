@@ -3209,6 +3209,19 @@ html.reveal-ready.reveal-reduced .reveal {
   padding: 0 0 64px;
 }
 
+/* Mobile/tablet gutter restoration.
+   `.hero-content` and `.page-section` are combined with `.wrap` in markup, but
+   their `padding: X 0 Y` shorthands reset the inline gutter that `.wrap` sets.
+   Re-apply the shared gutter token at the site's mobile/tablet breakpoint.
+   Desktop spacing is intentionally left untouched. */
+@media (max-width: 980px) {
+  .wrap.hero-content,
+  .wrap.page-section {
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+}
+
 @media (max-width: 640px) {
   .archive-controls::before,
   .archive-controls::after,
