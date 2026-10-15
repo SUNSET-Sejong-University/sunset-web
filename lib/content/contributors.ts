@@ -12,9 +12,21 @@ export const contributors = [
   {
     id: "azizbek-arzikulov",
     displayName: "Azizbek Arzikulov",
+    githubUsername: "azizbekdevuz",
+    githubUrl: "https://github.com/azizbekdevuz",
+    linkedinUrl: "https://www.linkedin.com/in/azizbek-arzikulov",
+    role: {
+      en: "Section Lead · Full-Stack Development / Engineering",
+      ko: "섹션 리드 · 풀스택 개발 / 엔지니어링",
+    },
+    projectSlugs: [],
+  },
+  {
+    id: "odina-yusupova",
+    displayName: "Odina Yusupova",
     githubUsername: "",
     githubUrl: "",
-    role: { en: "Organization member", ko: "Organization member" },
+    role: { en: "Section Lead · Business", ko: "섹션 리드 · 비즈니스" },
     projectSlugs: [],
   },
   {
@@ -74,5 +86,5 @@ export function getSortedContributors() {
 }
 
 export function getContributorsForProject(slug: string) {
-  return contributors.filter((c) => c.projectSlugs.includes(slug));
+  return contributors.filter((c: Contributor) => c.projectSlugs.includes(slug));
 }

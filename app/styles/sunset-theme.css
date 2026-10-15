@@ -2958,7 +2958,11 @@ html.reveal-ready.reveal-reduced .reveal {
 }
 
 .people-card-extended h2,
-.people-card-extended a h2 {
+.people-card-extended h3,
+.people-card-extended h4,
+.people-card-extended a h2,
+.people-card-extended a h3,
+.people-card-extended a h4 {
   color: var(--solder);
 }
 
@@ -2977,7 +2981,9 @@ html.reveal-ready.reveal-reduced .reveal {
   text-decoration: none;
 }
 
-.people-card-extended a:not(.people-chip):hover h2 {
+.people-card-extended a:not(.people-chip):hover h2,
+.people-card-extended a:not(.people-chip):hover h3,
+.people-card-extended a:not(.people-chip):hover h4 {
   color: var(--copper-bright);
 }
 
@@ -3034,6 +3040,216 @@ html.reveal-ready.reveal-reduced .reveal {
 .people-footer-link .text-link {
   margin-top: 8px;
   display: inline-block;
+}
+
+/* ---------- People groups & organization structure ---------- */
+
+.people-group-nav {
+  margin-top: 28px;
+}
+
+.people-group-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.people-group-nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 6px 12px;
+  font-size: 11px;
+}
+
+.people-section-head {
+  margin: 48px 0 0;
+  max-width: 60ch;
+}
+
+.people-section-head h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--solder);
+}
+
+.people-section-head p {
+  margin: 10px 0 0;
+  color: var(--solder-dim);
+  font-size: 15px;
+}
+
+/* `section` has a global 110px rhythm; nested group sections need their own. */
+.people-group,
+.org-structure-block {
+  padding: 0;
+  border-bottom: none;
+}
+
+.people-group {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--via-bright);
+  scroll-margin-top: 96px;
+}
+
+.people-group-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 16px;
+}
+
+.people-group-head h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-weight: 600;
+  color: var(--solder);
+}
+
+.people-group-count {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--silk);
+}
+
+.people-group-purpose {
+  margin: 8px 0 0;
+  max-width: 60ch;
+  color: var(--solder-dim);
+}
+
+.people-group-empty {
+  margin: 16px 0 0;
+  padding: 14px 16px;
+  max-width: 60ch;
+  border: 1px dashed var(--via-bright);
+  color: var(--silk);
+  font-size: 14px;
+}
+
+.people-structure-link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  margin-top: 48px;
+  padding: 20px 24px;
+  border: 1px solid var(--via-bright);
+  background: var(--mask);
+}
+
+.people-structure-link-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--solder);
+}
+
+.people-structure-link p {
+  margin: 6px 0 0;
+  color: var(--solder-dim);
+  font-size: 14px;
+}
+
+.org-structure-list {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+
+.org-structure-card {
+  position: relative;
+  height: 100%;
+  padding: 24px;
+  border: 1px solid var(--via-bright);
+  background: var(--mask-card);
+}
+
+.org-structure-card h3 {
+  margin: 8px 0 0;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--solder);
+}
+
+.org-structure-ref {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--copper-bright);
+}
+
+.org-structure-purpose {
+  margin: 8px 0 0;
+  color: var(--solder-dim);
+}
+
+.org-structure-count {
+  margin: 14px 0 16px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--silk);
+}
+
+.org-relationship-list {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.org-relationship {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--via-bright);
+  background: var(--mask-card);
+}
+
+.org-relationship p {
+  margin: 0;
+  flex: 1 1 220px;
+  min-width: 0;
+  color: var(--solder);
+}
+
+@media (min-width: 720px) {
+  .org-structure-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .people-group-nav-link {
+    min-height: 44px;
+  }
+
+  .people-structure-link {
+    padding: 16px;
+  }
+
+  .org-structure-card {
+    padding: 20px;
+  }
 }
 
 /* ---------- Timeline signal bus ---------- */
@@ -3207,6 +3423,19 @@ html.reveal-ready.reveal-reduced .reveal {
 
 .page-section {
   padding: 0 0 64px;
+}
+
+/* Mobile/tablet gutter restoration.
+   `.hero-content` and `.page-section` are combined with `.wrap` in markup, but
+   their `padding: X 0 Y` shorthands reset the inline gutter that `.wrap` sets.
+   Re-apply the shared gutter token at the site's mobile/tablet breakpoint.
+   Desktop spacing is intentionally left untouched. */
+@media (max-width: 980px) {
+  .wrap.hero-content,
+  .wrap.page-section {
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
 }
 
 @media (max-width: 640px) {

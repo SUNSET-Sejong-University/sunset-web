@@ -7,6 +7,9 @@ const mainRoutes = [
   "/en/projects",
   "/ko/projects",
   "/en/people",
+  "/ko/people",
+  "/en/people/structure",
+  "/ko/people/structure",
   "/en/timeline",
   "/en/about",
   "/en/join",
@@ -159,6 +162,123 @@ test.describe("content invariants", () => {
   });
 });
 
+test.describe("people groups and organization structure", () => {
+  const groupTitles = {
+    en: ["Founding Members", "Section Leads", "Advisory Committee", "Industry Mentors"],
+    ko: ["창립 멤버", "섹션 리드", "자문위원회", "업계 멘토"],
+  } as const;
+
+  for (const lang of ["en", "ko"] as const) {
+    test(`${lang} people page shows all four groups`, async ({ page }) => {
+      await page.goto(`/${lang}/people`);
+      for (const title of groupTitles[lang]) {
+        await expect(page.getByRole("heading", { level: 3, name: title, exact: true })).toBeVisible();
+      }
+    });
+
+    test(`${lang} structure page lists all four groups and unverified relationships`, async ({
+      page,
+    }) => {
+      await page.goto(`/${lang}/people/structure`);
+      await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+      for (const title of groupTitles[lang]) {
+        await expect(page.getByRole("heading", { level: 3, name: title, exact: true })).toBeVisible();
+      }
+    });
+  }
+
+  test("only confirmed members are listed in each group", async ({ page }) => {
+    await page.goto("/en/people");
+    const founding = page.locator("#founding-members");
+    await expect(founding.getByRole("heading", { level: 4, name: "Prithwis Das" })).toBeVisible();
+
+    const leads = page.locator("#section-leads");
+    await expect(leads.getByRole("article")).toHaveCount(2);
+    await expect(leads.getByRole("heading", { level: 4, name: "Azizbek Arzikulov" })).toBeVisible();
+    await expect(leads).toContainText("Full-Stack Development / Engineering");
+    await expect(leads.getByRole("heading", { level: 4, name: "Odina Yusupova" })).toBeVisible();
+    await expect(leads).toContainText("Business");
+    await expect(leads.getByRole("link", { name: /Azizbek Arzikulov — LinkedIn/ })).toHaveAttribute(
+      "href",
+      "https://www.linkedin.com/in/azizbek-arzikulov",
+    );
+    // Private contact details are never rendered on the page.
+    await expect(page.locator("body")).not.toContainText("gmail.com");
+
+    for (const id of ["advisory-committee", "industry-mentors"]) {
+      const group = page.locator(`#${id}`);
+      await expect(group.getByRole("article")).toHaveCount(0);
+      await expect(group).toContainText(/No members published yet/);
+    }
+  });
+
+  test("structure page is reachable from people page, footer, and probe", async ({ page }) => {
+    await page.goto("/en/people");
+    await page.locator("main").getByRole("link", { name: "Organization structure →" }).first().click();
+    await expect(page).toHaveURL(/\/en\/people\/structure$/);
+
+    await page.goto("/en");
+    await page
+      .locator("footer.site-footer")
+      .getByRole("link", { name: "Organization structure" })
+      .click();
+    await expect(page).toHaveURL(/\/en\/people\/structure$/);
+
+    await page.goto("/en");
+    await page.keyboard.press("Control+K");
+    await page.getByRole("combobox").fill("structure");
+    await page.keyboard.press("Enter");
+    await expect(page).toHaveURL(/\/en\/people\/structure$/);
+  });
+
+  test("language switch preserves the structure path", async ({ page }) => {
+    await page.goto("/en/people/structure");
+    await page.getByRole("link", { name: /Switch language|언어 전환/i }).click();
+    await expect(page).toHaveURL(/\/ko\/people\/structure$/);
+  });
+
+  test("sitemap includes the structure page in both locales", async ({ request }) => {
+    const body = await (await request.get("/sitemap.xml")).text();
+    expect(body).toContain("/en/people/structure");
+    expect(body).toContain("/ko/people/structure");
+  });
+});
+
+test.describe("mobile gutters", () => {
+  const mobileWidths = [320, 390, 768] as const;
+  const routes = ["/en", "/ko", "/en/people", "/en/people/structure", "/en/join", "/en/timeline"];
+
+  for (const width of mobileWidths) {
+    for (const route of routes) {
+      test(`${route} has side gutters and no overflow at ${width}px`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto(route);
+        await page.waitForLoadState("networkidle");
+
+        const result = await page.evaluate(() => {
+          const root = document.documentElement;
+          const wraps = Array.from(document.querySelectorAll<HTMLElement>("main .wrap"));
+          const minGutter = Math.min(
+            ...wraps.map((node) => {
+              const style = window.getComputedStyle(node);
+              return Math.min(parseFloat(style.paddingLeft), parseFloat(style.paddingRight));
+            }),
+          );
+          return {
+            overflow: root.scrollWidth - root.clientWidth,
+            minGutter,
+            wrapCount: wraps.length,
+          };
+        });
+
+        expect(result.wrapCount).toBeGreaterThan(0);
+        expect(result.overflow).toBeLessThanOrEqual(0);
+        expect(result.minGutter).toBeGreaterThanOrEqual(16);
+      });
+    }
+  }
+});
+
 test.describe("probe palette", () => {
   test("opens with keyboard shortcut, filters, and closes with Escape", async ({ page }) => {
     await page.goto("/en");
@@ -240,6 +360,16 @@ test.describe("accessibility", () => {
 
   test("people page", async ({ page }) => {
     await page.goto("/en/people");
+    await expectNoSeriousAxeViolations(page);
+  });
+
+  test("organization structure page", async ({ page }) => {
+    await page.goto("/en/people/structure");
+    await expectNoSeriousAxeViolations(page);
+  });
+
+  test("korean organization structure page", async ({ page }) => {
+    await page.goto("/ko/people/structure");
     await expectNoSeriousAxeViolations(page);
   });
 
