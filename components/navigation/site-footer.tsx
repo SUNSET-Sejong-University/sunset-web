@@ -42,6 +42,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
                   ["", locale === "ko" ? "홈" : "Home"],
                   ["projects", dictionary.nav.projects],
                   ["people", dictionary.nav.people],
+                  ["people/structure", dictionary.orgStructurePage.navLabel],
                   ["about", dictionary.nav.about],
                   ["join", dictionary.nav.join],
                 ] as const

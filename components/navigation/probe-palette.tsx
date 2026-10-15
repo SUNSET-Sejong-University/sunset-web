@@ -92,6 +92,12 @@ export function ProbePalette({ locale, labels }: ProbePaletteProps) {
       },
       { id: "people", label: c.people, sub: c.subPage, run: () => go(localizedPath(locale, "people")) },
       {
+        id: "structure",
+        label: c.structure,
+        sub: c.subPage,
+        run: () => go(localizedPath(locale, "people/structure")),
+      },
+      {
         id: "timeline",
         label: c.timeline,
         sub: c.subPage,
