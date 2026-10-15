@@ -134,6 +134,7 @@ export type Dictionary = {
       about: string;
       projects: string;
       people: string;
+      structure: string;
       timeline: string;
       scope: string;
       mission: string;
@@ -161,6 +162,30 @@ export type Dictionary = {
     incompleteNote: string;
     contributorLabel: string;
     projectsLabel: string;
+    groupsNavLabel: string;
+    groupsTitle: string;
+    groupsIntro: string;
+    noPublishedMembers: string;
+    memberCountSingular: string;
+    memberCountPlural: string;
+    contributorsTitle: string;
+    contributorsIntro: string;
+    structureLinkLabel: string;
+    structureLinkHint: string;
+  };
+  orgStructurePage: {
+    title: string;
+    description: string;
+    heroEyebrow: string;
+    verifiedNote: string;
+    groupsTitle: string;
+    groupsIntro: string;
+    relationshipsTitle: string;
+    relationshipsIntro: string;
+    unpublishedNote: string;
+    viewGroupLabel: string;
+    backToPeople: string;
+    navLabel: string;
   };
   timelinePage: {
     title: string;
@@ -440,6 +465,7 @@ const dictionaries: Record<Locale, Dictionary> = {
         about: "Go to about",
         projects: "Go to projects archive",
         people: "Go to people",
+        structure: "Go to organization structure",
         timeline: "Go to timeline",
         scope: "Jump to live readout",
         mission: "Jump to mission",
@@ -469,6 +495,35 @@ const dictionaries: Record<Locale, Dictionary> = {
         "Contributor records are incomplete. Roles are listed as Contributor unless directly verified. SUNSET does not rank contributors by commit volume.",
       contributorLabel: "Contributor",
       projectsLabel: "Browse the full project archive for case studies and repositories.",
+      groupsNavLabel: "People groups",
+      groupsTitle: "Groups",
+      groupsIntro:
+        "SUNSET is organized into four groups. Members are listed only where their role has been confirmed.",
+      noPublishedMembers: "No members published yet. Names are added only once they are verified.",
+      memberCountSingular: "1 published member",
+      memberCountPlural: "{count} published members",
+      contributorsTitle: "Contributors",
+      contributorsIntro:
+        "Confirmed SUNSET members and repository contributors, listed alphabetically with verified project associations.",
+      structureLinkLabel: "Organization structure",
+      structureLinkHint: "See how these groups relate to one another.",
+    },
+    orgStructurePage: {
+      title: "Organization Structure",
+      description:
+        "How the SUNSET groups — Founding Members, Section Leads, Advisory Committee, and Industry Mentors — relate to one another.",
+      heroEyebrow: "HOW SUNSET IS ORGANIZED",
+      verifiedNote:
+        "SUNSET is an independent student engineering collective. Only confirmed groups and relationships are shown here; nothing on this page implies an official Sejong University role.",
+      groupsTitle: "The four groups",
+      groupsIntro: "Each group and what it is for. Select a group name to see its members.",
+      relationshipsTitle: "How the groups relate",
+      relationshipsIntro: "Relationships that have been confirmed so far.",
+      unpublishedNote:
+        "Reporting lines and relationships between the other groups have not been published yet, so none are shown.",
+      viewGroupLabel: "View members",
+      backToPeople: "Back to people",
+      navLabel: "Organization structure",
     },
     timelinePage: {
       title: "Timeline",
@@ -800,6 +855,7 @@ const dictionaries: Record<Locale, Dictionary> = {
         about: "소개로",
         projects: "프로젝트 아카이브로",
         people: "사람들로",
+        structure: "조직 구조로",
         timeline: "타임라인으로",
         scope: "라이브 리드아웃으로",
         mission: "미션으로",
@@ -829,6 +885,35 @@ const dictionaries: Record<Locale, Dictionary> = {
         "기여자 기록은 불완전합니다. 역할이 직접 확인되지 않으면 Contributor로 표시합니다. SUNSET은 커밋 수로 기여자 순위를 매기지 않습니다.",
       contributorLabel: "기여자",
       projectsLabel: "사례 연구와 저장소는 프로젝트 아카이브에서 확인하세요.",
+      groupsNavLabel: "사람 그룹",
+      groupsTitle: "그룹",
+      groupsIntro:
+        "SUNSET은 네 개의 그룹으로 구성됩니다. 역할이 확인된 구성원만 표시합니다.",
+      noPublishedMembers: "아직 공개된 구성원이 없습니다. 이름은 확인된 후에만 추가됩니다.",
+      memberCountSingular: "공개 구성원 1명",
+      memberCountPlural: "공개 구성원 {count}명",
+      contributorsTitle: "기여자",
+      contributorsIntro:
+        "확인된 SUNSET 구성원과 저장소 기여자를 이름순으로, 확인된 프로젝트 연관과 함께 표시합니다.",
+      structureLinkLabel: "조직 구조",
+      structureLinkHint: "이 그룹들이 서로 어떻게 연결되는지 확인하세요.",
+    },
+    orgStructurePage: {
+      title: "조직 구조",
+      description:
+        "SUNSET의 그룹 — 창립 멤버, 섹션 리드, 자문위원회, 업계 멘토 — 이 서로 어떻게 연결되는지 설명합니다.",
+      heroEyebrow: "HOW SUNSET IS ORGANIZED",
+      verifiedNote:
+        "SUNSET은 독립적인 학생 엔지니어링 집단입니다. 이 페이지에는 확인된 그룹과 관계만 표시하며, 세종대학교의 공식 직책을 의미하지 않습니다.",
+      groupsTitle: "네 개의 그룹",
+      groupsIntro: "각 그룹의 목적입니다. 그룹 이름을 선택하면 구성원을 볼 수 있습니다.",
+      relationshipsTitle: "그룹 간 관계",
+      relationshipsIntro: "현재까지 확인된 관계입니다.",
+      unpublishedNote:
+        "다른 그룹 사이의 보고 체계와 관계는 아직 공개되지 않아 표시하지 않습니다.",
+      viewGroupLabel: "구성원 보기",
+      backToPeople: "사람들로 돌아가기",
+      navLabel: "조직 구조",
     },
     timelinePage: {
       title: "타임라인",
