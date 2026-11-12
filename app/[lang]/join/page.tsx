@@ -32,5 +32,5 @@ export default async function JoinPage({ params }: JoinPageProps) {
   const locale = lang as Locale;
   const dictionary = getDictionary(locale);
 
-  return <JoinSections dictionary={dictionary} />;
+  return <JoinSections dictionary={dictionary} locale={locale} />;
 }

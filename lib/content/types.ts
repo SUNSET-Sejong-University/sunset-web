@@ -74,7 +74,8 @@ export type Contributor = {
   githubUsername?: string;
   githubUrl?: string;
   linkedinUrl?: string;
-  role: LocalizedStrings;
+  role?: LocalizedStrings;
+  founder?: boolean;
   projectSlugs: readonly string[];
 };
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { communityCopy } from "@/lib/content/community";
 
 import { getContributorInitials } from "@/lib/content/about-people";
 import { getGroupMembers, orgGroups } from "@/lib/content/org-structure";
@@ -34,7 +35,8 @@ function PersonCard({ locale, person, headingLevel: Heading }: PersonCardProps) 
           ) : (
             <Heading>{person.displayName}</Heading>
           )}
-          <span className="role">{person.role[locale]}</span>
+          {person.founder ? <span className="founder-label">{communityCopy.founder[locale]}</span> : null}
+          {person.role ? <span className="role">{person.role[locale]}</span> : null}
         </div>
       </div>
       {person.projectSlugs.length > 0 || person.linkedinUrl ? (
@@ -163,7 +165,7 @@ export function PeopleSections({ locale, dictionary, people }: PeopleSectionsPro
 
         <ul className="people-grid-extended reveal">
           {people.map((person) => (
-            <li key={person.id}>
+            <li key={person.id} id={`person-${person.id}`}>
               <PersonCard locale={locale} person={person} headingLevel="h3" />
             </li>
           ))}

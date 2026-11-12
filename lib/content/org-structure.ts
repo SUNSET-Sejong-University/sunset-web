@@ -9,13 +9,13 @@ import type { Contributor, LocalizedStrings } from "@/lib/content/types";
  * verified members have been published yet — never fill it with guesses.
  *
  * Verified sources:
- * - Founding Members: `docs/REPOSITORY_AUDIT.md` §7 lists Prithwis Das as the
- *   owner-confirmed "Founding contributor".
+ * - Founders: owner-confirmed Prithwis Das, 최종우, and Odina Yusupova
+ *   (2026-11-10). Founder status is separate from functional role.
  * - Section Leads lead projects in their respective groups: stated by the
  *   project owner. Owner-confirmed (2026-10-16): Azizbek Arzikulov leads
  *   Full-Stack Development / Engineering; Odina Yusupova leads Business.
  *   Other sections have no confirmed lead yet.
- * - Advisory Committee and Industry Mentors: group names are owner-provided;
+ * - Advisory Committee and Mentors: group names are owner-provided;
  *   no members or relationships have been confirmed yet.
  */
 
@@ -49,7 +49,7 @@ export const orgGroups = [
       en: "Contributors confirmed as founding contributors of the SUNSET organization.",
       ko: "SUNSET 조직의 창립 기여자로 확인된 구성원입니다.",
     },
-    memberIds: ["prithwis-das"],
+    memberIds: ["prithwis-das", "choe-jong-u", "odina-yusupova"],
   },
   {
     id: "section-leads",
@@ -71,10 +71,10 @@ export const orgGroups = [
   },
   {
     id: "industry-mentors",
-    title: { en: "Industry Mentors", ko: "업계 멘토" },
+    title: { en: "Mentors", ko: "멘토" },
     purpose: {
-      en: "Industry professionals who mentor SUNSET members.",
-      ko: "SUNSET 구성원을 멘토링하는 업계 전문가입니다.",
+      en: "Mentors who guide SUNSET members.",
+      ko: "SUNSET 구성원에게 조언과 도움을 주는 멘토입니다.",
     },
     memberIds: [],
   },

@@ -1,16 +1,18 @@
-import { ORG_CONTACT } from "@/lib/content/org";
+import { JoinFormEmbed } from "@/components/join/join-form-embed";
+import { communityCopy, joinApplication } from "@/lib/content/community";
 import { GITHUB_ORG_URL } from "@/lib/content/site";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
+import type { Locale } from "@/lib/i18n/locales";
 
 type JoinSectionsProps = {
   dictionary: Dictionary;
+  locale: Locale;
 };
 
-export function JoinSections({ dictionary }: JoinSectionsProps) {
+export function JoinSections({ dictionary, locale }: JoinSectionsProps) {
   const sections = [
     { refdes: "U1", title: dictionary.joinPage.whoCanParticipateTitle, body: dictionary.joinPage.whoCanParticipate },
     { refdes: "U2", title: dictionary.joinPage.projectTypesTitle, body: dictionary.joinPage.projectTypes },
-    { refdes: "U3", title: dictionary.joinPage.proposalProcessTitle, body: dictionary.joinPage.proposalProcess },
     {
       refdes: "U4",
       title: dictionary.joinPage.documentationExpectationsTitle,
@@ -34,6 +36,9 @@ export function JoinSections({ dictionary }: JoinSectionsProps) {
       </section>
 
       <div className="wrap page-section">
+        <JoinFormEmbed locale={locale} />
+        <details className="join-notes">
+          <summary>{joinApplication.copy.notes[locale]}</summary>
         <div className="join-layout">
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             {sections.map((section) => (
@@ -56,11 +61,8 @@ export function JoinSections({ dictionary }: JoinSectionsProps) {
               </ul>
             </div>
             <div className="join-contact-panel reveal">
-              <p className="case-section-title">{dictionary.joinPage.contactTitle}</p>
-              <a href={`mailto:${ORG_CONTACT.email}`}>{ORG_CONTACT.email}</a>
-              <p style={{ marginTop: 12, fontSize: 12, color: "var(--silk)", lineHeight: 1.55 }}>
-                {dictionary.joinPage.noFormNote}
-              </p>
+              <h2>{communityCopy.apply[locale]}</h2>
+              <a className="text-link" href="#join-form-heading">{communityCopy.formAction[locale]} ↓</a>
               <a
                 href={GITHUB_ORG_URL}
                 target="_blank"
@@ -73,6 +75,7 @@ export function JoinSections({ dictionary }: JoinSectionsProps) {
             </div>
           </aside>
         </div>
+        </details>
       </div>
     </>
   );

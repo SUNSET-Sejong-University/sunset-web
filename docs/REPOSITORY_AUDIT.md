@@ -892,3 +892,11 @@ Before final content freeze, verify:
 - whether NaeonAir/WisDrone terminology has been standardized.
 
 Record unresolved facts as unknown. Do not fill them with plausible guesses.
+
+## Public content evidence update — 2026-11-10
+
+Owner confirms founders Prithwis Das, 최종우 (owner corrected the requested 최조우 typo), and Odina Yusupova. 최종우: HR; Odina: Business & Marketing. Prithwis has no recorded functional role. Existing person ids/project associations preserved. Owner associates Arif Anzum with Creative Arts; no current person record exists, so use name-only attribution without a new biography.
+
+Owner confirms PCBWay Partner and Tuya Sponsor. General company sources: https://www.pcbway.com/project/sponsor/future-innovators-program.html and https://www.tuya.com/about (also https://www.tuya.com/contact). No terms or benefits inferred.
+
+Azizbek Arzikulov matches existing `azizbek-arzikulov` / `azizbekdevuz`. Profile https://github.com/azizbekdevuz links to a git-guardian URL that resolves to https://github.com/azizbekdevuz/gitguardian. Organizer event https://luma.com/hzx0ffcg confirms December 20–21, 2025 and exact award category `Track Winner`. https://github.com/XSpoonAi/SpoonCommunity lists GitGuardian / GitGuard Agent without a track value. https://neonewstoday.com/week-in-review/neo-news-week-in-review-december-22-december-28/ confirms GitGuardian as track winner and PRISM overall first place. Detailed report https://neonewstoday.com/ai/neo-and-spoonos-announce-winners-of-scoop-ai-hackathon-seoul-bowl/ is indexed but body fetch timed out. Organizer announcement https://x.com/SpoonOS_ai/status/2004122570401165803 resolved without readable body. No technical track assigned, no overall victory claimed, no SUNSET organization award implied.

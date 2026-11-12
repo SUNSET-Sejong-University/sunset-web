@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { SunsetChipMark } from "@/components/brand/SunsetChipMark";
+import { communityLinks } from "@/lib/content/community";
 import { WEBSITE_DEVELOPER } from "@/lib/content/developer";
 import { ORG_CONTACT, ORG_FULL_NAME } from "@/lib/content/org";
 import { GITHUB_ORG_URL } from "@/lib/content/site";
@@ -43,6 +44,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
                   ["projects", dictionary.nav.projects],
                   ["people", dictionary.nav.people],
                   ["people/structure", dictionary.orgStructurePage.navLabel],
+                  ...communityLinks.map((link) => [link.path, link.label[locale]] as const),
                   ["about", dictionary.nav.about],
                   ["join", dictionary.nav.join],
                 ] as const

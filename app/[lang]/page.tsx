@@ -3,6 +3,7 @@ import { createSiteMetadata, organizationJsonLd } from "@/lib/metadata/site";
 import { isLocale, type Locale } from "@/lib/i18n/locales";
 import { notFound } from "next/navigation";
 
+import { HomeCommunity } from "@/components/community/home-community";
 import { HomeHero } from "@/components/home/home-hero";
 import { HomeSections } from "@/components/home/home-sections";
 
@@ -42,6 +43,7 @@ export default async function HomePage({ params }: HomePageProps) {
       />
       <HomeHero locale={locale} dictionary={dictionary} />
       <HomeSections locale={locale} dictionary={dictionary} />
+      <HomeCommunity locale={locale} />
     </>
   );
 }

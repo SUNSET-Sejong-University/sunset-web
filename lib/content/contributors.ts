@@ -1,12 +1,12 @@
 import type { Contributor } from "@/lib/content/types";
 
-export const contributors = [
+export const contributors: readonly Contributor[] = [
   {
     id: "prithwis-das",
     displayName: "Prithwis Das",
     githubUsername: "Prithwis-2023",
     githubUrl: "https://github.com/Prithwis-2023",
-    role: { en: "Founding contributor", ko: "Founding contributor" },
+    founder: true,
     projectSlugs: ["buildin"],
   },
   {
@@ -26,7 +26,8 @@ export const contributors = [
     displayName: "Odina Yusupova",
     githubUsername: "",
     githubUrl: "",
-    role: { en: "Section Lead · Business", ko: "섹션 리드 · 비즈니스" },
+    founder: true,
+    role: { en: "Business & Marketing", ko: "비즈니스 및 마케팅" },
     projectSlugs: [],
   },
   {
@@ -74,7 +75,8 @@ export const contributors = [
     displayName: "최종우",
     githubUsername: "",
     githubUrl: "",
-    role: { en: "Intellichair", ko: "Intellichair" },
+    founder: true,
+    role: { en: "HR", ko: "인사 (HR)" },
     projectSlugs: ["intellichair"],
   },
 ] satisfies readonly Contributor[];

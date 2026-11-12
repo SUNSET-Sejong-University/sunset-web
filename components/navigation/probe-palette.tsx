@@ -1,5 +1,7 @@
 "use client";
 
+import { communityLinks } from "@/lib/content/community";
+
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -70,6 +72,7 @@ export function ProbePalette({ locale, labels }: ProbePaletteProps) {
 
     const c = labels.commands;
     const base: ProbeCommand[] = [
+      ...communityLinks.map((link) => ({ id: link.path, label: link.label[locale], sub: c.subPage, run: () => go(localizedPath(locale, link.path)) })),
       { id: "home", label: c.home, sub: c.subPage, run: () => go(home) },
       { id: "about", label: c.about, sub: c.subPage, run: () => go(localizedPath(locale, "about")) },
       {

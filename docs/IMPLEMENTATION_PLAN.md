@@ -577,3 +577,19 @@ Add a feature only when it:
 - fixes a verified defect.
 
 Record material scope changes in `IMPLEMENTATION_STATUS.md`.
+
+## Public community pages — 2026-11-10 scope
+
+After auditing clean HEAD cec2f33, implement only the requested public content:
+1. Update Join (remove process and email application action; centralize missing form URL), Mentor terminology, separate founder status and functional roles.
+2. Add static bilingual Sections, Partners & Sponsors and company profiles, and member Achievements archive with evidence URLs.
+3. Integrate homepage and compact Community navigation, PROBE, footer and sitemap.
+4. Run existing lint/typecheck/build/Playwright checks; verify route clicks, keyboard, accessibility, localization and responsive screenshots. Document actual results and unresolved inputs.
+
+Exit criteria: requested content and navigation verified; no fabricated form, role, track or relationship details; remaining missing form URL and logo permissions explicitly documented. Do not restore discarded platform work.
+
+## Focused refinement — visual/form integration and verification
+
+Use docs/COMMUNITY_VISUAL_PLAN.md for the completed asset-first plan. Preserve the current working version; no Git discard/staging/publishing operations. Local SVG/React assets explain interest pathways, company domains and the verified GitGuardian graph. Integrate only homepage surface continuity, Join official iframe, manual partner showcase/profile visual composition, and scanability of existing public pages. No fifth task.
+
+Exit checks: all standard commands actually run; both locales/themes at 1440/1024/768/390/320 inspected; no autoplay, real manual selection/keyboard/touch/reduced-motion support, static directory works without JS, real Google iframe verified without submission, fallback usable when blocked, cross-origin limitations and baseline failures recorded separately.

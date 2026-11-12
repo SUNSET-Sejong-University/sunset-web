@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { SunsetChipMark } from "@/components/brand/SunsetChipMark";
 import { ProbePalette } from "@/components/navigation/probe-palette";
 import { ThemeToggle } from "@/components/navigation/theme-toggle";
 import { GITHUB_ORG_URL } from "@/lib/content/site";
+import { communityCopy, communityLinks } from "@/lib/content/community";
 import type { ClientNavDictionary } from "@/lib/i18n/client-dictionary";
 import {
   getAlternateLocale,
@@ -36,15 +37,21 @@ function SiteHeaderFrame({ locale, dictionary, pathname }: SiteHeaderFrameProps)
   const alternateLocale = getAlternateLocale(locale);
   const alternateHref = swapLocaleInPath(pathname, alternateLocale);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [communityOpen, setCommunityOpen] = useState(false);
+  const communityToggle = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (!menuOpen) return;
+    if (!menuOpen && !communityOpen) return;
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMenuOpen(false);
+      if (event.key === "Escape") {
+        if (communityOpen) communityToggle.current?.focus();
+        setMenuOpen(false);
+        setCommunityOpen(false);
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [menuOpen]);
+  }, [menuOpen, communityOpen]);
 
   return (
     <header className="site-header">
@@ -87,6 +94,15 @@ function SiteHeaderFrame({ locale, dictionary, pathname }: SiteHeaderFrameProps)
                   </li>
                 );
               })}
+              <li className="community-menu-item">
+                <button ref={communityToggle} type="button" className="community-menu-toggle" aria-expanded={communityOpen} aria-controls="community-menu" onClick={() => setCommunityOpen((value) => !value)}>
+                  {communityCopy.community[locale]} <span aria-hidden>⌄</span>
+                </button>
+                <div id="community-menu" className="community-menu" hidden={!communityOpen}>
+                  <Link className="community-people-link" href={localizedPath(locale, "people")} onClick={() => setMenuOpen(false)}>{dictionary.nav.people}</Link>
+                  {communityLinks.map((link) => <Link key={link.path} href={localizedPath(locale, link.path)} onClick={() => setMenuOpen(false)}>{link.label[locale]}</Link>)}
+                </div>
+              </li>
               <li className="mobile-only">
                 <Link href={localizedPath(locale, "people")} onClick={() => setMenuOpen(false)}>
                   {dictionary.nav.people}

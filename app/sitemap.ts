@@ -4,7 +4,7 @@ import { getSiteUrl } from "@/lib/content/site";
 import { getAllProjectSlugs } from "@/lib/content/projects";
 import { locales } from "@/lib/i18n/locales";
 
-const staticSegments = ["", "projects", "people", "people/structure", "timeline", "about", "join"];
+const staticSegments = ["", "projects", "people", "people/structure", "timeline", "about", "join", "sections", "partners", "partners/pcbway", "partners/tuya", "achievements"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = getSiteUrl();

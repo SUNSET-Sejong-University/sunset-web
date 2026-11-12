@@ -511,7 +511,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     orgStructurePage: {
       title: "Organization Structure",
       description:
-        "How the SUNSET groups — Founding Members, Section Leads, Advisory Committee, and Industry Mentors — relate to one another.",
+        "How the SUNSET groups — Founding Members, Section Leads, Advisory Committee, and Mentors — relate to one another.",
       heroEyebrow: "HOW SUNSET IS ORGANIZED",
       verifiedNote:
         "SUNSET is an independent student engineering collective. Only confirmed groups and relationships are shown here; nothing on this page implies an official Sejong University role.",
@@ -599,8 +599,8 @@ const dictionaries: Record<Locale, Dictionary> = {
     joinPage: {
       title: "Join",
       description:
-        "Propose a build for the SUNSET archive — a project brief, not a recruitment funnel.",
-      heroEyebrow: "BUILD PROPOSAL",
+        "Find your place in SUNSET through software, hardware, and creative work.",
+      heroEyebrow: "JOIN SUNSET",
       whoCanParticipateTitle: "Who can participate",
       whoCanParticipate:
         "Students interested in collaborative engineering work—software, hardware, creative coding, or experimental systems—can propose a project.",
@@ -628,7 +628,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       contactTitle: "Contact",
       githubCta: "Browse our repos →",
       noFormNote:
-        "This site does not provide a submission form or chat channel. Contact prithwisd@sju.ac.kr or reach SUNSET contributors through your existing collaboration channels.",
+        "The official application form link is being confirmed. Please check back here to apply.",
     },
     caseStudy: {
       identity: "Project identity",
@@ -901,7 +901,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     orgStructurePage: {
       title: "조직 구조",
       description:
-        "SUNSET의 그룹 — 창립 멤버, 섹션 리드, 자문위원회, 업계 멘토 — 이 서로 어떻게 연결되는지 설명합니다.",
+        "SUNSET의 그룹 — 창립 멤버, 섹션 리드, 자문위원회, 멘토 — 이 서로 어떻게 연결되는지 설명합니다.",
       heroEyebrow: "HOW SUNSET IS ORGANIZED",
       verifiedNote:
         "SUNSET은 독립적인 학생 엔지니어링 집단입니다. 이 페이지에는 확인된 그룹과 관계만 표시하며, 세종대학교의 공식 직책을 의미하지 않습니다.",
@@ -986,8 +986,8 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     joinPage: {
       title: "참여",
-      description: "SUNSET 아카이브에 빌드를 제안하는 방법 — 채용 페이지가 아닌 프로젝트 브리프.",
-      heroEyebrow: "BUILD PROPOSAL",
+      description: "소프트웨어, 하드웨어, 창작 활동을 통해 SUNSET에 참여하세요.",
+      heroEyebrow: "JOIN SUNSET",
       whoCanParticipateTitle: "참여 대상",
       whoCanParticipate:
         "소프트웨어, 하드웨어, 크리에이티브 코딩, 실험 시스템 등 협업 공학 작업에 관심 있는 학생이 프로젝트를 제안할 수 있습니다.",
@@ -1015,7 +1015,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       contactTitle: "연락",
       githubCta: "저장소 둘러보기 →",
       noFormNote:
-        "이 사이트는 제출 양식이나 채팅 채널을 제공하지 않습니다. prithwisd@sju.ac.kr로 연락하거나 기존 협업 경로를 이용하세요.",
+        "공식 지원 양식 링크를 확인 중입니다. 지원을 원하시면 이 페이지를 다시 확인해 주세요.",
     },
     caseStudy: {
       identity: "프로젝트 정보",

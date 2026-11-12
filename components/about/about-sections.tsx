@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { communityCopy } from "@/lib/content/community";
 
 import {
   aboutFeaturedContributorIds,
@@ -157,7 +158,8 @@ export function AboutSections({ locale, dictionary }: AboutSectionsProps) {
                 <>
                   <div className="person-avatar">{getContributorInitials(person.displayName)}</div>
                   <h4>{person.displayName}</h4>
-                  <span className="role">{person.role[locale]}</span>
+                  {person.founder ? <span className="founder-label">{communityCopy.founder[locale]}</span> : null}
+                  {person.role ? <span className="role">{person.role[locale]}</span> : null}
                 </>
               );
               if (person.githubUrl) {

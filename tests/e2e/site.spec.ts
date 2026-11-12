@@ -164,8 +164,8 @@ test.describe("content invariants", () => {
 
 test.describe("people groups and organization structure", () => {
   const groupTitles = {
-    en: ["Founding Members", "Section Leads", "Advisory Committee", "Industry Mentors"],
-    ko: ["창립 멤버", "섹션 리드", "자문위원회", "업계 멘토"],
+    en: ["Founding Members", "Section Leads", "Advisory Committee", "Mentors"],
+    ko: ["창립 멤버", "섹션 리드", "자문위원회", "멘토"],
   } as const;
 
   for (const lang of ["en", "ko"] as const) {

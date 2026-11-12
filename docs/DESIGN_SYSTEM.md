@@ -315,3 +315,15 @@ Generic SaaS hero pill, bento grids, technology marquees, fake terminals as evid
 ## 14. Visual self-review
 
 Before declaring visual work complete, compare live routes against `docs/REDESIGN_AUDIT.md` and capture screenshots at required viewports including Probe open state.
+
+## Community page compositions — 2026-11-10
+
+Sections uses numbered editorial pathways with anchor navigation and Join links; these interest areas are separate from People organizational groups. Partners & Sponsors pairs replaceable text/image logo slots with explicit Partner/Sponsor labels; profiles separate company information from the SUNSET relationship. Achievements uses a year rail and award-led record with member/project attribution and visible evidence. Homepage integrations are restrained text-led bands in the existing mask/copper palette. A compact Community disclosure groups the new desktop destinations; mobile retains the direct People entry and adds the grouped archive links. Reuse existing typography, tokenized colors, light mode, focus styles and shared footer disclaimer.
+
+## Visual asset and motion refinement — 2026-11-10
+
+Local React/SVG assets: discipline-glyph.tsx, section-pathway-map.tsx, company-capability-visual.tsx and gitguardian-pipeline.tsx. Use semantic captions/text; decorative SVG geometry is aria-hidden. No generated raster art needed. Source facts/stages live in lib/content/community-visuals.ts.
+
+PartnerShowcase is a narrow manual client island: both selectors and status labels always visible, keyboard/previous-next/touch navigation, polite current-slide announcement; no autoplay. Selection uses a 16px/220ms transition; reduced motion is instantaneous. Initial render stays static. Complete server-rendered organization directory remains usable without JavaScript. Pipeline only animates the selected stage contact on an explicit action.
+
+Join has a first-class form frame and localized fallback, with 1850px desktop, 2100px tablet, 2400px mobile reserved height. Contribution notes remain in native details after the form. Parent markup must not access/style Google's iframe document. Existing shared security headers are retained: no child frame-src restriction is present.

@@ -749,3 +749,13 @@ unless independently demonstrated.
 - Language switching preserves path.
 - Screenshots were captured and reviewed.
 - Actual outcomes are recorded in `IMPLEMENTATION_REPORT.md`.
+
+## Public community extension — 2026-11-10
+
+Additional localized static routes: `/[lang]/sections`, `/[lang]/partners`, `/[lang]/partners/pcbway`, `/[lang]/partners/tuya`, `/[lang]/achievements`. Sections are interest areas, separate from People organizational categories. Founder is an independent person attribute. Owner confirms PCBWay as Partner and Tuya as Sponsor; no relationship terms are asserted. Achievements credit member projects, not organizational awards. Join uses a centralized official form URL when supplied; until then it explicitly states that the application link is being confirmed and provides no fake submission path. This supersedes earlier email-only Join copy.
+
+## Visual refinement and official form — 2026-11-10
+
+The official Join form URL is now owner-supplied: https://forms.gle/8yM9cvjNWBpxJLZw7 . The responder redirect and published embed were verified in a browser; use the centralized canonical iframe URL in lib/content/community.ts and keep the supplied short URL as a new-tab fallback. No submission through SUNSET, proxy, iframe DOM inspection or iframe restyling in product code. Google owns the multiple form pages and their availability; only the first page was inspected without personal data entry. Do not infer section prefills or persist website selections.
+
+The requested visual refinement reuses current routes/content. A manual partner rail coexists with complete static directory entries; company capability diagrams describe public company domains, not SUNSET benefits. A five-stage GitGuardian graph diagram is attributed to the actual repository implementation. Homepage community uses the void canvas matching the page/footer; adjacent Join CTA retains its intentional mask surface. No new palette, backend, generated branding or fifth task.

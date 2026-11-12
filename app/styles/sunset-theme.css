@@ -751,6 +751,98 @@ a {
   }
 }
 
+/* Public community archive: pathways, organizations, and attributed records. */
+.community-hero { padding: clamp(48px, 8vw, 100px) 0 40px; border-bottom: 1px solid var(--via-bright); }
+.community-hero h1 { font-family: var(--font-display); font-size: clamp(36px, 5.5vw, 72px); line-height: 1.1; letter-spacing: -.04em; margin: 20px 0; max-width: 18ch; }
+.community-hero .lede { max-width: 62ch; color: var(--solder-dim); }
+.community-hero .text-link { display: inline-block; margin-top: 24px; }
+.community-note { max-width: 75ch; color: var(--solder-dim); line-height: 1.8; margin-top: 24px; }
+.wrap.page-section.community-content { padding: 48px var(--gutter) 64px; }
+.section-jump-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 32px; }
+.section-jump-links a { padding: 10px 0; color: var(--copper); border-bottom: 1px solid var(--copper-dim); }
+.section-pathway { display: grid; grid-template-columns: 48px 1fr 1.3fr; gap: 32px; padding: 40px 0; border-bottom: 1px solid var(--via-bright); scroll-margin-top: 100px; }
+.pathway-number { color: var(--silk); }
+.pathway-focus { font-size: 12px; color: var(--copper); margin-bottom: 12px; }
+.section-pathway h2 { font-family: var(--font-display); font-size: clamp(26px, 3vw, 36px); line-height: 1.2; }
+.section-pathway p { color: var(--solder-dim); line-height: 1.8; }
+.section-pathway .text-link { display: inline-block; margin-top: 20px; }
+.section-association { margin-top: 16px; font-size: 14px; }
+.organization-entry { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(24px, 6vw, 80px); padding: 32px 0 48px; border-bottom: 1px solid var(--via-bright); margin-bottom: 32px; }
+.organization-mark { min-height: 200px; display: flex; align-items: center; justify-content: center; padding: 24px; background: var(--mask); border: 1px solid var(--via-bright); border-block-start: 3px solid var(--copper); }
+.organization-mark span { font-family: var(--font-display); font-size: clamp(32px, 5vw, 58px); font-weight: 600; letter-spacing: -.05em; color: var(--solder); }
+.organization-mark--tuya { background: var(--mask-raised); border-block-start-color: var(--phosphor); }
+.organization-mark img { object-fit: contain; max-width: 100%; }
+.relationship-label { color: var(--copper); font-size: 12px; margin-bottom: 12px; }
+.organization-entry h2 { font-family: var(--font-display); font-size: 36px; }
+.organization-field { color: var(--silk); margin: 8px 0 20px; }
+.organization-entry p, .organization-story p { line-height: 1.8; }
+.organization-entry .text-link { display: inline-block; margin-top: 24px; }
+.organization-profile { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 6vw, 80px); }
+.organization-profile aside .relationship-label { margin-top: 24px; }
+.organization-story section + section { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--via-bright); }
+.organization-story > section { padding: 0; border-bottom: 0; }
+.organization-story > section + section { padding-top: 32px; }
+.organization-story h2 { font-family: var(--font-display); font-size: 24px; margin-bottom: 20px; }
+.relationship-statement { font-size: 24px; color: var(--copper); margin-bottom: 16px; }
+.evidence-links { list-style: none; padding: 0; margin-top: 20px; }
+.evidence-links li { border-top: 1px solid var(--via); }
+.evidence-links a { display: inline-block; padding: 12px 0; color: var(--copper); line-height: 1.6; }
+.achievement-record { display: grid; grid-template-columns: .3fr 1fr; gap: 40px; }
+.achievement-year { font-size: clamp(36px, 5vw, 64px); color: var(--silk); line-height: 1; border-top: 3px solid var(--via-bright); padding-top: 24px; }
+.achievement-body { border-top: 3px solid var(--copper); padding-top: 24px; }
+.achievement-award { font-family: var(--font-display); font-size: clamp(34px, 5vw, 64px); letter-spacing: -.04em; line-height: 1.15; margin-bottom: 20px; }
+.achievement-event { font-size: 20px; margin-bottom: 8px; }
+.achievement-body header > .mono:last-child { font-size: 13px; color: var(--silk); }
+.achievement-project { margin: 36px 0; padding: 32px 0; border-block: 1px solid var(--via-bright); }
+.achievement-project h3 { font-family: var(--font-display); font-size: clamp(24px, 3vw, 32px); }
+.achievement-person { display: inline-block; color: var(--copper); padding: 12px 0; }
+.achievement-project p, .achievement-evidence p { color: var(--solder-dim); line-height: 1.8; max-width: 65ch; }
+.achievement-project .text-link { display: inline-block; margin-top: 24px; }
+.achievement-evidence h3 { margin-bottom: 12px; }
+.achievement-evidence { padding: 0; border: 0; }
+.home-community { padding: 64px 0; border-top: 1px solid var(--via-bright); background: var(--void); }
+.home-partners { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.home-partners h2 { font-family: var(--font-display); font-size: clamp(26px, 3vw, 38px); margin-bottom: 20px; }
+.home-partners ul { list-style: none; padding: 0; }
+.home-partners li + li { border-top: 1px solid var(--via-bright); }
+.home-partners li a { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 20px 0; }
+.home-partners li span { font-family: var(--font-display); font-size: 32px; }
+.home-partners small { font-size: 12px; color: var(--copper); }
+.home-achievement { display: grid; grid-template-columns: .6fr 1.4fr auto; gap: 28px; align-items: start; border-top: 1px solid var(--via-bright); padding-top: 32px; margin-top: 48px; }
+.home-achievement h2 { font-family: var(--font-display); font-size: 30px; color: var(--copper); }
+.home-achievement p { line-height: 1.8; }
+.home-achievement p:last-child { font-size: 14px; color: var(--solder-dim); }
+.home-sections-link { border-top: 1px solid var(--via-bright); margin-top: 32px; padding-top: 24px; display: flex; justify-content: space-between; gap: 24px; }
+.home-sections-link p { max-width: 65ch; color: var(--solder-dim); }
+.founder-label { display: block; font-size: 12px; color: var(--copper); margin: 4px 0; }
+[id^="person-"] { scroll-margin-top: 100px; }
+.community-menu-item { position: relative; }
+.community-menu-toggle { cursor: pointer; display: flex; align-items: center; gap: 6px; min-height: 44px; font: inherit; color: var(--solder-dim); background: none; border: 0; padding: 0; }
+.community-menu-toggle:focus-visible { outline: 2px solid var(--copper); outline-offset: 4px; }
+.community-menu { position: absolute; top: 100%; right: 0; min-width: 240px; padding: 12px; background: var(--mask-raised); border: 1px solid var(--via-bright); box-shadow: var(--shadow-soft); }
+.main-nav ul .community-menu a { display: block; padding: 12px; white-space: normal; }
+@media (min-width: 981px) {
+ .main-nav > ul { align-items: center; }
+}
+@media (max-width: 980px) {
+ .main-nav.is-open { max-height: calc(100dvh - 72px); overflow-y: auto; transition: none; }
+ .main-nav ul .community-menu .community-people-link { display: none; }
+ .community-menu { position: static; min-width: 0; box-shadow: none; }
+ .home-achievement { grid-template-columns: 1fr 2fr; }
+ .home-achievement > .text-link { grid-column: 2; }
+}
+@media (max-width: 640px) {
+ .section-pathway { grid-template-columns: 24px 1fr; gap: 16px; padding: 32px 0; }
+ .section-pathway > div:last-child { grid-column: 2; }
+ .organization-entry, .organization-profile, .home-partners { grid-template-columns: 1fr; gap: 24px; }
+ .organization-mark { min-height: 160px; }
+ .achievement-record { grid-template-columns: 1fr; gap: 24px; }
+ .achievement-year { font-size: 32px; padding-top: 16px; }
+ .home-achievement { grid-template-columns: 1fr; gap: 16px; }
+ .home-achievement > .text-link { grid-column: auto; }
+ .home-sections-link { flex-direction: column; }
+}
+
 /* ---------- Buttons / links ---------- */
 
 .btn {
@@ -3450,3 +3542,154 @@ html.reveal-ready.reveal-reduced .reveal {
     display: none;
   }
 }
+/* ---------- Community visual assets and manual brand rail ---------- */
+.pathway-map { margin: 0 0 64px; border-block: 1px solid var(--via-bright); padding: 28px 0 36px; }
+.pathway-map figcaption { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 32px; align-items: end; margin-bottom: 32px; }
+.pathway-map figcaption > .mono { grid-column: 1 / -1; color: var(--copper); font-size: 11px; }
+.pathway-map h2 { font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px); line-height: 1.2; }
+.pathway-map figcaption p { color: var(--solder-dim); }
+.pathway-map-board { display: grid; grid-template-columns: 140px 1fr; gap: 32px; align-items: center; }
+.pathway-map-origin { position: relative; padding: 32px 16px; border: 1px solid var(--copper-dim); text-align: center; }
+.pathway-map-origin::after { content: ""; position: absolute; top: 50%; left: 100%; width: 32px; border-top: 1px solid var(--copper); }
+.map-origin-contact { display: block; height: 8px; width: 8px; margin: 16px auto 0; border: 1px solid var(--phosphor); border-radius: 50%; }
+.pathway-map-board ol { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 28px; list-style: none; padding: 12px 0 12px 28px; border-left: 1px solid var(--copper-dim); }
+.pathway-map-board li { min-width: 0; position: relative; }
+.pathway-map-board li::before { content: ""; position: absolute; top: 50%; right: 100%; width: 28px; border-top: 1px solid var(--copper-dim); }
+.pathway-map-board a { display: flex; align-items: center; gap: 12px; min-height: 100px; border: 1px solid var(--via-bright); padding: 12px; background: var(--mask); transition: border-color .16s, background-color .16s; }
+.pathway-map-board a:hover, .pathway-map-board a:focus-visible { border-color: var(--copper); background: var(--mask-raised); }
+.pathway-map-board svg { flex: 0 0 54px; width: 54px; height: 52px; color: var(--copper); }
+.pathway-map-board small { display: block; color: var(--silk); font-size: 11px; margin-bottom: 6px; }
+.pathway-map-board strong { display: block; font-family: var(--font-display); font-size: 17px; font-weight: 500; line-height: 1.35; }
+.map-port { flex: 0 0 6px; width: 6px; height: 6px; border: 1px solid var(--via-bright); border-radius: 50%; margin-left: auto; }
+.pathway-map-board a:is(:hover,:focus-visible) .map-port { background: var(--phosphor); border-color: var(--phosphor); }
+.section-pathway { grid-template-columns: 92px 1fr 1.3fr; }
+.pathway-discipline { color: var(--copper); }
+.pathway-discipline .pathway-number { display: block; margin-bottom: 12px; font-size: 11px; }
+.pathway-discipline svg { max-width: 100%; }
+.home-section-paths { display: flex; justify-content: space-between; gap: 20px; margin-top: 32px; padding-top: 24px; color: var(--copper-dim); border-top: 1px solid var(--via-bright); }
+.home-section-paths svg { width: 64px; height: 52px; min-width: 0; }
+.home-section-paths + .home-sections-link { margin-top: 16px; border-top: 0; padding-top: 0; }
+.company-visual { color: var(--copper); width: 100%; min-width: 0; margin: 0; }
+.company-visual--sponsor { color: var(--phosphor); }
+.company-visual svg { display: block; width: 100%; height: auto; aspect-ratio: 480 / 260; }
+.capability-outline { stroke: var(--solder-dim); }
+.capability-guide { stroke: var(--via-bright); stroke-dasharray: 3 4; }
+.company-visual figcaption { border-top: 1px solid var(--via-bright); padding-top: 16px; }
+.company-visual figcaption > span { color: var(--silk); font-size: 11px; }
+.company-visual ul { list-style: none; padding: 0; margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px 16px; }
+.company-visual li { color: var(--solder); font-size: 13px; line-height: 1.6; }
+.company-visual li::before { content: ""; display: inline-block; width: 5px; height: 5px; border: 1px solid currentColor; margin-right: 8px; vertical-align: middle; }
+.partner-showcase { margin-bottom: 64px; border-bottom: 1px solid var(--via-bright); }
+.brand-rail { display: flex; flex-wrap: wrap; align-items: stretch; gap: 16px; padding: 20px 0; border-block: 1px solid var(--via-bright); }
+.brand-rail-label { flex: 0 0 100%; font-size: 11px; color: var(--silk); }
+.brand-rail-contacts { display: flex; gap: 12px; flex: 1; }
+.brand-rail-contacts button { position: relative; display: flex; align-items: center; gap: 16px; min-width: 170px; min-height: 68px; padding: 12px 20px; background: transparent; border: 1px solid var(--via-bright); cursor: pointer; text-align: left; }
+.brand-rail-contacts button[aria-pressed="true"] { border-color: var(--copper); background: var(--mask); }
+.brand-rail-contacts strong { display: block; font-family: var(--font-display); font-size: 20px; font-weight: 500; }
+.brand-rail-contacts small { display: block; color: var(--solder-dim); font-size: 12px; margin-top: 4px; }
+.brand-contact { width: 8px; height: 8px; flex: none; border-radius: 50%; border: 1px solid var(--copper-dim); }
+[aria-pressed="true"] > .brand-contact { background: var(--phosphor); border-color: var(--phosphor); }
+.brand-rail-controls { display: flex; align-items: center; gap: 8px; }
+.brand-rail-controls button { height: 48px; width: 48px; border: 1px solid var(--via-bright); background: var(--mask); cursor: pointer; font-size: 22px; }
+.brand-rail button:focus-visible { outline: 2px solid var(--copper); outline-offset: 4px; }
+.brand-rail button:disabled { cursor: default; }
+.brand-stage { position: relative; overflow: hidden; background: var(--mask); border-inline: 1px solid var(--via-bright); touch-action: pan-y; }
+.brand-stage::before, .brand-stage::after { content: ""; position: absolute; width: 24px; height: 6px; top: 50%; background: var(--copper-dim); z-index: 1; }
+.brand-stage::before { left: 0; } .brand-stage::after { right: 0; }
+.brand-slide { display: grid; grid-template-columns: 1fr 1.15fr; gap: 48px; align-items: center; min-height: 400px; padding: 40px 48px; }
+.brand-slide .organization-mark { min-height: 100px; padding: 0; justify-content: flex-start; border: 0; background: transparent; }
+.brand-slide .organization-mark span { font-size: clamp(40px, 5vw, 72px); }
+.brand-slide h2 { font-size: 16px; font-family: var(--font-display); margin: 8px 0; }
+.brand-slide-identity > p:not(.relationship-label) { color: var(--solder-dim); max-width: 25ch; line-height: 1.7; }
+.brand-slide .text-link { display: inline-block; margin-top: 24px; }
+.brand-current { margin: 16px 0; font-size: 12px; color: var(--solder-dim); }
+.organization-directory-title { font-family: var(--font-display); font-size: 24px; margin-bottom: 24px; }
+.organization-index .organization-entry { grid-template-columns: 180px 1fr; gap: 40px; padding: 24px 0 32px; }
+.organization-index .organization-entry .organization-mark { min-height: 110px; }
+.organization-index .organization-entry .organization-mark span { font-size: 30px; }
+.organization-index .organization-entry h2 { font-size: 26px; }
+.organization-profile aside .company-visual { margin: 32px 0 24px; }
+.organization-profile--pcbway aside { border-left: 2px solid var(--copper-dim); padding-left: 24px; }
+.organization-profile--tuya aside { border-top: 2px solid var(--phosphor-dim); padding-top: 24px; }
+.organization-profile--tuya .organization-mark { border-top: 0; }
+.gitguardian-pipeline { margin: 28px 0; padding: 28px 0; border-block: 1px solid var(--via-bright); }
+.gitguardian-pipeline figcaption .mono { color: var(--copper); font-size: 11px; }
+.gitguardian-pipeline figcaption h3 { margin: 12px 0; font-family: var(--font-display); font-size: 24px; }
+.gitguardian-pipeline ol { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); padding: 0; margin: 28px 0 20px; list-style: none; }
+.gitguardian-pipeline li { min-width: 0; color: var(--solder-dim); }
+.gitguardian-pipeline button { display: block; background: transparent; border: 0; padding: 0; width: 100%; text-align: center; cursor: pointer; color: inherit; }
+.gitguardian-pipeline button:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
+.gitguardian-pipeline button svg { display: block; width: 100%; height: auto; }
+.gitguardian-pipeline button span { font-size: 11px; line-height: 1.6; display: block; padding: 4px 6px; }
+.gitguardian-pipeline li > p { font-size: 12px; line-height: 1.6; padding: 12px 8px 0; }
+.gitguardian-pipeline [data-active="true"] button { color: var(--copper); }
+.gitguardian-pipeline [data-active="true"] > p { color: var(--solder); }
+.pipeline-readout { font-size: 11px; overflow-wrap: anywhere; color: var(--copper); }
+.gitguardian-pipeline > .text-link { margin-top: 16px; }
+.join-form-section { padding: 48px 0 0; margin-top: 48px; border-top: 1px solid var(--via-bright); }
+.join-form-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+.join-form-heading .mono { color: var(--copper); font-size: 11px; }
+.join-form-heading h2 { font-family: var(--font-display); font-size: clamp(26px,4vw,42px); line-height: 1.2; margin: 12px 0; }
+.join-form-heading p:not(.mono) { color: var(--solder-dim); line-height: 1.8; max-width: 55ch; }
+.join-form-heading > a { flex-shrink: 0; margin-top: 12px; }
+.join-form-frame { border: 1px solid var(--via-bright); border-top: 3px solid var(--copper); background: var(--mask); }
+.join-form-toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 16px 24px; border-bottom: 1px solid var(--via-bright); font-size: 11px; }
+.join-form-toolbar button { min-height: 44px; padding: 8px 12px; border: 1px solid var(--via-bright); background: var(--void); color: var(--solder); font-size: 13px; cursor: pointer; }
+.join-form-frame iframe { display: block; width: 100%; height: 1850px; border: 0; color-scheme: light; }
+.join-form-fallback { padding: 40px 24px; }
+.join-form-fallback h3 { font-size: 24px; font-family: var(--font-display); margin-bottom: 16px; }
+.join-form-fallback p { color: var(--solder-dim); max-width: 60ch; line-height: 1.8; }
+.join-form-fallback a { display: inline-block; margin-top: 24px; }
+.join-form-note { color: var(--solder-dim); max-width: 80ch; font-size: 13px; line-height: 1.8; margin-top: 20px; }
+@media (max-width: 980px) {
+ .pathway-map-board { grid-template-columns: 100px 1fr; gap: 24px; }
+ .pathway-map-origin { padding-inline: 8px; font-size: 13px; }
+ .pathway-map-origin::after { width: 24px; }
+ .pathway-map-board a { padding: 12px 8px; gap: 8px; }
+ .pathway-map-board svg { flex-basis: 40px; width: 40px; }
+ .pathway-map-board strong { font-size: 15px; }
+ .brand-slide { gap: 24px; padding: 32px; }
+ .gitguardian-pipeline ol { grid-template-columns: 1fr; gap: 12px; }
+ .gitguardian-pipeline li { display: grid; grid-template-columns: 110px 1fr; align-items: center; }
+ .gitguardian-pipeline li > p { padding: 0 0 0 16px; }
+ .gitguardian-pipeline button svg { height: 60px; }
+ .join-form-heading { flex-direction: column; gap: 8px; }
+ .join-form-frame iframe { height: 2100px; }
+}
+@media (max-width: 640px) {
+ .pathway-map figcaption { grid-template-columns: 1fr; }
+ .pathway-map-board { grid-template-columns: 1fr; gap: 0; }
+ .pathway-map-origin { width: 120px; margin-bottom: 24px; }
+ .pathway-map-origin::after { width: 0; height: 24px; border-left: 1px solid var(--copper); top: 100%; left: 50%; }
+ .pathway-map-board ol { grid-template-columns: 1fr; margin-left: 60px; padding-left: 20px; }
+ .pathway-map-board li::before { width: 20px; }
+ .pathway-map-board a { min-height: 76px; padding: 8px 12px; }
+ .pathway-map-board strong { font-size: 16px; }
+ .section-pathway { grid-template-columns: 48px 1fr; gap: 16px; }
+ .pathway-discipline svg { height: 44px; }
+ .brand-rail { gap: 12px; }
+ .brand-rail-contacts { gap: 8px; flex: 1 1 100%; }
+ .brand-rail-contacts button { min-width: 0; flex: 1; gap: 10px; padding: 12px; }
+ .brand-rail-contacts strong { font-size: 18px; }
+ .brand-rail-controls { margin-left: auto; }
+ .brand-slide { grid-template-columns: 1fr; min-height: 620px; padding: 28px 24px; gap: 24px; }
+ .brand-stage::before, .brand-stage::after { width: 10px; }
+ .brand-slide .organization-mark { min-height: 80px; }
+ .brand-slide .company-visual svg { max-height: 200px; }
+ .brand-slide .company-visual ul { gap: 6px 12px; margin-top: 10px; }
+ .organization-index .organization-entry { grid-template-columns: 1fr; gap: 20px; }
+ .organization-index .organization-entry .organization-mark { min-height: 100px; }
+ .organization-profile--pcbway aside { padding-left: 16px; }
+ .join-form-frame iframe { height: 2400px; }
+ .join-form-toolbar { padding: 12px; }
+ .join-form-section { margin-top: 32px; padding-top: 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .pathway-map-board a { transition: none; }
+}
+.join-hero h1 { font-family: var(--font-display); font-size: clamp(36px,5.5vw,64px); letter-spacing: -.04em; line-height: 1.1; margin-top: 16px; }
+.join-form-section { margin-top: 0; border-top: 0; }
+.join-notes { margin-top: 32px; border-block: 1px solid var(--via-bright); }
+.join-notes summary { cursor: pointer; padding: 24px 0; font-family: var(--font-display); font-size: 18px; }
+.join-notes[open] { padding-bottom: 32px; }
+.join-notes .join-layout { margin-top: 8px; }
