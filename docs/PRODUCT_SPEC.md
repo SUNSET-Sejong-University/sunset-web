@@ -752,7 +752,7 @@ unless independently demonstrated.
 
 ## Public community extension — 2026-11-10
 
-Additional localized static routes: `/[lang]/sections`, `/[lang]/partners`, `/[lang]/partners/pcbway`, `/[lang]/partners/tuya`, `/[lang]/achievements`. Sections are interest areas, separate from People organizational categories. Founder is an independent person attribute. Owner confirms PCBWay as Partner and Tuya as Sponsor; no relationship terms are asserted. Achievements credit member projects, not organizational awards. Join uses a centralized official form URL when supplied; until then it explicitly states that the application link is being confirmed and provides no fake submission path. This supersedes earlier email-only Join copy.
+Additional localized static routes: `/[lang]/sections`, `/[lang]/partners`, `/[lang]/partners/pcbway`, `/[lang]/partners/tuya`, `/[lang]/achievements`. Sections are interest areas, separate from People organizational categories. Founder is an independent person attribute. Owner confirms PCBWay as Partner and Tuya as Sponsor; no relationship terms are asserted. Achievements credit member projects, not organizational awards. Join embeds the centralized official Google Form and provides a direct fallback. About links to the same responder URL. People includes owner-confirmed Staff separately from interest pathways. Achievements can include both awards and official features and keep the original distinction in each entry.
 
 ## Visual refinement and official form — 2026-11-10
 

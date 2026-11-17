@@ -1,3 +1,4 @@
+import { joinApplication } from "@/lib/content/community";
 import Link from "next/link";
 import { communityCopy } from "@/lib/content/community";
 
@@ -6,7 +7,7 @@ import {
   getContributorInitials,
 } from "@/lib/content/about-people";
 import { contributors } from "@/lib/content/contributors";
-import { orgStatsAbout, ORG_CONTACT_EMAIL } from "@/lib/content/org";
+import { orgStatsAbout } from "@/lib/content/org";
 import { GITHUB_ORG_URL } from "@/lib/content/site";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/locales";
@@ -194,8 +195,8 @@ export function AboutSections({ locale, dictionary }: AboutSectionsProps) {
         <div className="wrap cta-inner">
           <h2>{about.joinCtaTitle}</h2>
           <div className="cta-actions">
-            <a className="btn btn-primary" href={`mailto:${ORG_CONTACT_EMAIL}`}>
-              {about.joinCtaEmail}
+            <a className="btn btn-primary" href={joinApplication.url} target="_blank" rel="noopener noreferrer">
+              {about.joinCtaApply}
             </a>
             <a
               className="btn btn-ghost"

@@ -1,7 +1,7 @@
 import type { LocalizedStrings } from "@/lib/content/types";
 
 export const visualCopy = {
-  mapTitle: { en: "One collective. Six starting points.", ko: "하나의 공동체, 여섯 가지 출발점." },
+  mapTitle: { en: "One collective. Seven starting points.", ko: "하나의 공동체, 일곱 가지 출발점." },
   mapHint: { en: "Follow a pathway to explore its focus.", ko: "관심 있는 경로를 따라 분야를 살펴보세요." },
   companyScope: { en: "Company capabilities", ko: "기업의 사업 분야" },
   showcase: { en: "Partner & sponsor showcase", ko: "파트너 및 후원사 쇼케이스" },

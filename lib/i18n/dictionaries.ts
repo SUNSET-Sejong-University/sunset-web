@@ -122,6 +122,7 @@ export type Dictionary = {
   };
   probe: {
     openLabel: string;
+    closeLabel: string;
     title: string;
     placeholder: string;
     empty: string;
@@ -217,7 +218,7 @@ export type Dictionary = {
     peopleTitle: string;
     peopleIntro: string;
     joinCtaTitle: string;
-    joinCtaEmail: string;
+    joinCtaApply: string;
     joinCtaRepos: string;
   };
   joinPage: {
@@ -453,6 +454,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     probe: {
       openLabel: "Open command palette",
+      closeLabel: "Close command palette",
       title: "PROBE — COMMAND PALETTE",
       placeholder: "Type a command or destination…",
       empty: "no match — try a different signal",
@@ -475,7 +477,7 @@ const dictionaries: Record<Locale, Dictionary> = {
         join: "Jump to join",
         joinPage: "Go to join page",
         github: "Open GitHub org",
-        email: "Email the org",
+        email: "Apply to Club",
         projectCaseStudy: "Open {name} case study",
         projectRepo: "Open {name} repo",
         subPage: "page",
@@ -498,7 +500,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       groupsNavLabel: "People groups",
       groupsTitle: "Groups",
       groupsIntro:
-        "SUNSET is organized into four groups. Members are listed only where their role has been confirmed.",
+        "SUNSET is organized into groups. Members are listed only where their role has been confirmed.",
       noPublishedMembers: "No members published yet. Names are added only once they are verified.",
       memberCountSingular: "1 published member",
       memberCountPlural: "{count} published members",
@@ -515,7 +517,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       heroEyebrow: "HOW SUNSET IS ORGANIZED",
       verifiedNote:
         "SUNSET is an independent student engineering collective. Only confirmed groups and relationships are shown here; nothing on this page implies an official Sejong University role.",
-      groupsTitle: "The four groups",
+      groupsTitle: "Organization groups",
       groupsIntro: "Each group and what it is for. Select a group name to see its members.",
       relationshipsTitle: "How the groups relate",
       relationshipsIntro: "Relationships that have been confirmed so far.",
@@ -593,7 +595,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       peopleIntro:
         "Names pulled from the commit history and contributor lists across our repositories — the people who actually wrote the code and bent the metal.",
       joinCtaTitle: "Studying at Sejong and want in on the next build?",
-      joinCtaEmail: "Email the org",
+      joinCtaApply: "Apply to Club",
       joinCtaRepos: "Browse our repos →",
     },
     joinPage: {
@@ -843,6 +845,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     probe: {
       openLabel: "명령 팔레트 열기",
+      closeLabel: "명령 팔레트 닫기",
       title: "PROBE — COMMAND PALETTE",
       placeholder: "명령 또는 목적지 입력…",
       empty: "일치 없음 — 다른 신호를 시도하세요",
@@ -865,7 +868,7 @@ const dictionaries: Record<Locale, Dictionary> = {
         join: "참여로",
         joinPage: "참여 페이지로",
         github: "GitHub 조직 열기",
-        email: "조직에 이메일",
+        email: "동아리 지원하기",
         projectCaseStudy: "{name} 사례 연구 열기",
         projectRepo: "{name} 저장소 열기",
         subPage: "페이지",
@@ -888,7 +891,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       groupsNavLabel: "사람 그룹",
       groupsTitle: "그룹",
       groupsIntro:
-        "SUNSET은 네 개의 그룹으로 구성됩니다. 역할이 확인된 구성원만 표시합니다.",
+        "SUNSET 조직의 구성입니다. 역할이 확인된 구성원만 표시합니다.",
       noPublishedMembers: "아직 공개된 구성원이 없습니다. 이름은 확인된 후에만 추가됩니다.",
       memberCountSingular: "공개 구성원 1명",
       memberCountPlural: "공개 구성원 {count}명",
@@ -905,7 +908,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       heroEyebrow: "HOW SUNSET IS ORGANIZED",
       verifiedNote:
         "SUNSET은 독립적인 학생 엔지니어링 집단입니다. 이 페이지에는 확인된 그룹과 관계만 표시하며, 세종대학교의 공식 직책을 의미하지 않습니다.",
-      groupsTitle: "네 개의 그룹",
+      groupsTitle: "조직 구성",
       groupsIntro: "각 그룹의 목적입니다. 그룹 이름을 선택하면 구성원을 볼 수 있습니다.",
       relationshipsTitle: "그룹 간 관계",
       relationshipsIntro: "현재까지 확인된 관계입니다.",
@@ -981,7 +984,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       peopleIntro:
         "저장소 커밋 기록과 기여자 목록에서 가져온 이름 — 실제로 코드를 쓰고 금속을 구부린 사람들입니다.",
       joinCtaTitle: "세종대학교에서 다음 빌드에 참여하고 싶나요?",
-      joinCtaEmail: "조직에 이메일",
+      joinCtaApply: "동아리 지원하기",
       joinCtaRepos: "저장소 둘러보기 →",
     },
     joinPage: {

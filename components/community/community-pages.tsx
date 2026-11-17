@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { SectionPathwayMap } from "@/components/community/section-pathway-map";
 import { DisciplineGlyph } from "@/components/community/discipline-glyph";
@@ -24,10 +25,7 @@ export function CommunityHero({ title, description, children }: { title: string;
 
 export function SectionsPageContent({ locale }: { locale: Locale }) {
   return <>
-    <CommunityHero title={communityCopy.sections.title[locale]} description={communityCopy.sections.description[locale]}>
-      <p className="community-note">{communityCopy.sectionNote[locale]}</p>
-
-    </CommunityHero>
+    <CommunityHero title={communityCopy.sections.title[locale]} description={communityCopy.sections.description[locale]} />
     <div className="wrap page-section community-content section-pathways">
       <SectionPathwayMap locale={locale} />
       {buildSections.map((section, index) => {
@@ -37,7 +35,7 @@ export function SectionsPageContent({ locale }: { locale: Locale }) {
           <div className="pathway-discipline"><span className="mono pathway-number" aria-hidden>0{index + 1}</span><DisciplineGlyph slug={section.slug} /></div>
           <div><p className="mono pathway-focus">{section.focus[locale]}</p><h2>{section.title[locale]}</h2></div>
           <div><p>{section.description[locale]}</p>
-            {member || section.associatedName ? <p className="section-association">{communityCopy.associatedMember[locale]} · {member ? <Link href={`${localizedPath(locale, "people")}#person-${member.id}`}>{member.displayName}</Link> : section.associatedName}</p> : null}
+            {member ? <p className="section-association">{communityCopy.associatedMember[locale]} · <Link href={`${localizedPath(locale, "people")}#person-${member.id}`}>{member.displayName}</Link></p> : null}
             <Link className="text-link" href={localizedPath(locale, "join")}>{communityCopy.join[locale]} →</Link>
           </div>
         </section>;
@@ -90,16 +88,24 @@ export function AchievementsPageContent({ locale }: { locale: Locale }) {
     <div className="wrap page-section community-content achievement-archive">
       {achievements.map((achievement) => {
         const member = achievementMember(achievement.memberId);
-        return <article className="achievement-record" key={achievement.id}>
+        return <article className="achievement-record" key={achievement.id} id={achievement.id}>
           <div className="achievement-year mono">{achievement.year}</div>
           <div className="achievement-body"><header><p className="mono relationship-label">{achievementCopy.member[locale]}</p>
             <h2 className="achievement-award">{achievement.award[locale]}</h2><p className="achievement-event">{achievement.event}</p><p className="mono">{achievement.date[locale]}</p>
           </header>
           <section className="achievement-project"><h3>{achievement.project}</h3>
             <Link className="achievement-person" href={`${localizedPath(locale, "people")}#person-${member.id}`}>{member.displayName} →</Link>
-            <p>{achievement.description[locale]}</p><GitguardianPipeline locale={locale} /><a className="text-link" href={achievement.repository} target="_blank" rel="noopener noreferrer">{achievementCopy.project[locale]} ↗</a>
+            <p>{achievement.description[locale]}</p>
+            <a className="text-link" href={achievement.projectUrl} target="_blank" rel="noopener noreferrer">{achievementCopy.project[locale]} ↗</a>
           </section>
-          <section className="achievement-evidence"><h3>{achievementCopy.evidence[locale]}</h3><p>{achievementCopy.note[locale]}</p><ul className="evidence-links">{achievement.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label[locale]} ↗</a></li>)}</ul></section>
+          <div className="achievement-media" role="group" aria-label={achievementCopy.photos[locale]}>
+            {achievement.media.map((image) => <figure key={image.src}>
+              <a href={image.src}><Image src={image.src} width={image.width} height={image.height} alt={image.alt[locale]} sizes={achievement.media.length > 1 ? "(max-width: 640px) 92vw, (max-width: 1024px) 48vw, 380px" : "(max-width: 768px) 92vw, 800px"} /></a>
+              <figcaption className="mono">{image.credit[locale]}</figcaption>
+            </figure>)}
+          </div>
+          {achievement.id === "gitguardian-seoul-bowl-2025" ? <GitguardianPipeline locale={locale} /> : null}
+          <section className="achievement-evidence"><h3>{achievementCopy.evidence[locale]}</h3><ul className="evidence-links">{achievement.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label[locale]} ↗</a></li>)}</ul></section>
           </div>
         </article>;
       })}

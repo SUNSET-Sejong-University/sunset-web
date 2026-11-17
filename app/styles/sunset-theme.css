@@ -259,10 +259,17 @@ a {
 }
 
 .brand-mark {
-  width: 28px;
-  height: 28px;
+  width: 34px;
+  height: 34px;
   flex: none;
+  transition: transform .2s var(--ease);
 }
+
+.brand-mark, .brand-lockup {
+  filter: drop-shadow(0 0 .75px var(--solder)) drop-shadow(0 1px 1px var(--mask-raised));
+}
+
+.brand:is(:hover, :focus-visible) .brand-mark { transform: translateY(-2px); }
 
 .brand small {
   display: block;
@@ -383,12 +390,12 @@ a {
   color: var(--copper-ink);
 }
 
-.nav-cta .arrow {
+.nav-cta svg {
   transition: transform 0.2s var(--ease);
 }
 
-.nav-cta:hover .arrow {
-  transform: translateX(2px);
+.nav-cta:hover svg {
+  transform: translate(2px, -2px);
 }
 
 /* ---------- Mobile nav toggle ---------- */
@@ -414,24 +421,6 @@ a {
     gap: 5px;
   }
 
-  .nav-toggle span {
-    display: block;
-    height: 1.5px;
-    width: 16px;
-    background: var(--solder);
-    transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
-  }
-
-  .nav-toggle[aria-expanded="true"] span:nth-child(1) {
-    transform: translateY(6.5px) rotate(45deg);
-  }
-  .nav-toggle[aria-expanded="true"] span:nth-child(2) {
-    opacity: 0;
-  }
-  .nav-toggle[aria-expanded="true"] span:nth-child(3) {
-    transform: translateY(-6.5px) rotate(-45deg);
-  }
-
   .main-nav {
     position: fixed;
     top: 72px;
@@ -443,13 +432,13 @@ a {
     align-items: stretch;
     gap: 0;
     max-height: 0;
+    visibility: hidden;
     overflow: hidden;
-    transition: max-height 0.3s var(--ease);
     z-index: 99;
   }
 
   .main-nav.is-open {
-    max-height: 360px;
+    visibility: visible;
   }
 
   .main-nav ul {
@@ -501,22 +490,13 @@ a {
   letter-spacing: 0.06em;
 }
 
-.probe-trigger-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--phosphor);
-  box-shadow: 0 0 6px 1px var(--phosphor);
-  animation: pulse-dot 2.4s ease-in-out infinite;
-}
-
 @media (max-width: 640px) {
   .probe-trigger kbd {
     display: none;
   }
 }
 
-/* Very narrow screens: collapse the Probe trigger to its signal dot and
+/* Very narrow screens: collapse the Probe trigger to its search icon and
    tighten the control rail so the header never overflows. */
 @media (max-width: 374px) {
   .site-header-cluster,
@@ -579,7 +559,7 @@ a {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 14vh;
+  padding: min(14dvh, 126px) 0 16px;
 }
 
 .probe-overlay[hidden] {
@@ -635,15 +615,6 @@ a {
 
 .probe-input::placeholder {
   color: var(--solder-faint);
-}
-
-.probe-esc {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--solder-faint);
-  border: 1px solid var(--via-bright);
-  border-radius: 2px;
-  padding: 2px 6px;
 }
 
 .probe-results {
@@ -737,7 +708,7 @@ a {
 
 @media (max-width: 480px) {
   .probe-overlay {
-    padding-top: 10vh;
+    padding-top: 10dvh;
   }
 
   .probe-foot {
@@ -1863,7 +1834,7 @@ footer.site-footer {
   color: var(--silk);
 }
 
-.footer-col h4 {
+.footer-col h2 {
   font-family: var(--font-mono);
   font-size: 11.5px;
   letter-spacing: 0.08em;
@@ -3689,7 +3660,63 @@ html.reveal-ready.reveal-reduced .reveal {
 }
 .join-hero h1 { font-family: var(--font-display); font-size: clamp(36px,5.5vw,64px); letter-spacing: -.04em; line-height: 1.1; margin-top: 16px; }
 .join-form-section { margin-top: 0; border-top: 0; }
-.join-notes { margin-top: 32px; border-block: 1px solid var(--via-bright); }
-.join-notes summary { cursor: pointer; padding: 24px 0; font-family: var(--font-display); font-size: 18px; }
-.join-notes[open] { padding-bottom: 32px; }
-.join-notes .join-layout { margin-top: 8px; }
+
+.organization-logo-plate {
+  width: min(100%, 560px);
+  padding: clamp(8px, 2.2vw, 24px);
+  background: #fff;
+  border: 1px solid var(--via-bright);
+}
+.organization-logo-plate img { display: block; width: 100%; height: auto; }
+
+.achievement-record { grid-template-columns: minmax(0, .28fr) minmax(0, 1fr); scroll-margin-top: 95px; }
+.achievement-record + .achievement-record { margin-top: clamp(72px, 10vw, 144px); }
+.achievement-project { margin-bottom: 24px; }
+.achievement-media { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px; align-items: start; }
+.achievement-media figure { min-width: 0; margin: 0; }
+.achievement-media a { display: block; overflow: hidden; background: var(--mask); border: 1px solid var(--via-bright); transition: border-color .2s var(--ease); }
+.achievement-media a:is(:hover, :focus-visible) { border-color: var(--copper); }
+.achievement-media img { display: block; width: 100%; height: auto; }
+.achievement-media figcaption { margin-top: 10px; font-size: 11px; color: var(--solder-faint); }
+.achievement-evidence { margin-top: 32px; }
+
+.home-achievement { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
+.home-achievement img { display: block; width: 100%; height: auto; border: 1px solid var(--via-bright); }
+.home-achievement .text-link { display: inline-block; margin-top: 16px; }
+.home-section-paths { gap: clamp(5px, 2vw, 20px); }
+
+.community-menu-toggle svg { transition: transform .2s var(--ease); }
+.community-menu-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.community-menu-toggle:is(:hover, .is-active) { color: var(--solder); }
+.community-menu-toggle.is-active { text-decoration: underline; text-decoration-color: var(--copper); text-underline-offset: .55em; }
+.main-nav ul .community-menu a:is(:hover, :focus-visible) { background: var(--mask); }
+.main-nav ul .community-menu a[aria-current="page"] { box-shadow: inset 2px 0 var(--copper); }
+
+.footer-brand-link { display: inline-block; margin-bottom: 16px; }
+.brand-lockup { display: block; width: 110px; height: auto; }
+.site-footer .footer-col a { display: inline-flex; gap: 8px; align-items: center; min-height: 32px; overflow-wrap: anywhere; }
+.site-footer .footer-col svg { flex: none; color: var(--copper); }
+.footer-col ul { gap: 3px; }
+
+.probe-panel { display: flex; flex-direction: column; max-height: 100%; }
+.probe-head { justify-content: space-between; padding-block: 6px; }
+.probe-close { flex: none; color: var(--solder); }
+.probe-input { min-width: 0; }
+.probe-input-row:focus-within { border-color: var(--copper); }
+.probe-prompt { flex: none; }
+.probe-results { min-height: 0; overscroll-behavior: contain; }
+.probe-item { min-height: 44px; }
+.probe-item-icon { width: 16px; height: 16px; color: var(--solder-faint); border: 0; border-radius: 0; }
+.probe-item.is-active .probe-item-icon { color: var(--copper); background: none; }
+
+@media (max-width: 640px) {
+  .achievement-record, .home-achievement { grid-template-columns: minmax(0, 1fr); }
+  .footer-navigation ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 12px; }
+  .site-footer .footer-navigation a { min-height: 40px; }
+  .probe-item-label { white-space: normal; overflow-wrap: anywhere; }
+  .probe-foot { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-mark, .community-menu-toggle svg, .achievement-media a, .nav-cta svg { transition: none; }
+  .brand:is(:hover, :focus-visible) .brand-mark, .nav-cta:hover svg { transform: none; }
+}

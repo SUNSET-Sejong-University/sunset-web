@@ -12,12 +12,13 @@ export const contributors: readonly Contributor[] = [
   {
     id: "azizbek-arzikulov",
     displayName: "Azizbek Arzikulov",
+    founder: true,
     githubUsername: "azizbekdevuz",
     githubUrl: "https://github.com/azizbekdevuz",
     linkedinUrl: "https://www.linkedin.com/in/azizbek-arzikulov",
     role: {
-      en: "Section Lead · Full-Stack Development / Engineering",
-      ko: "섹션 리드 · 풀스택 개발 / 엔지니어링",
+      en: "Section Lead · Full Stack Web Development / Engineering",
+      ko: "섹션 리드 · 풀스택 웹 개발 / 엔지니어링",
     },
     projectSlugs: [],
   },
@@ -69,6 +70,20 @@ export const contributors: readonly Contributor[] = [
     githubUrl: "",
     role: { en: "MoodFlix", ko: "MoodFlix" },
     projectSlugs: ["moodflix"],
+  },
+  {
+    id: "arif-anzum",
+    displayName: "Arif Anzum",
+    githubUsername: "",
+    githubUrl: "",
+    projectSlugs: [],
+  },
+  {
+    id: "adalat-alizada",
+    displayName: "Adalat Alizada",
+    githubUsername: "",
+    githubUrl: "",
+    projectSlugs: [],
   },
   {
     id: "choe-jong-u",

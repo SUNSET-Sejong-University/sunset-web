@@ -9,8 +9,8 @@ import type { Contributor, LocalizedStrings } from "@/lib/content/types";
  * verified members have been published yet — never fill it with guesses.
  *
  * Verified sources:
- * - Founders: owner-confirmed Prithwis Das, 최종우, and Odina Yusupova
- *   (2026-11-10). Founder status is separate from functional role.
+ * - Founder and Staff assignments are owner-confirmed. Founder status is
+ *   separate from functional role.
  * - Section Leads lead projects in their respective groups: stated by the
  *   project owner. Owner-confirmed (2026-10-16): Azizbek Arzikulov leads
  *   Full-Stack Development / Engineering; Odina Yusupova leads Business.
@@ -21,6 +21,7 @@ import type { Contributor, LocalizedStrings } from "@/lib/content/types";
 
 export type OrgGroupId =
   | "founding-members"
+  | "staff"
   | "section-leads"
   | "advisory-committee"
   | "industry-mentors";
@@ -49,7 +50,7 @@ export const orgGroups = [
       en: "Contributors confirmed as founding contributors of the SUNSET organization.",
       ko: "SUNSET 조직의 창립 기여자로 확인된 구성원입니다.",
     },
-    memberIds: ["prithwis-das", "choe-jong-u", "odina-yusupova"],
+    memberIds: ["prithwis-das", "choe-jong-u", "odina-yusupova", "azizbek-arzikulov"],
   },
   {
     id: "section-leads",
@@ -59,6 +60,15 @@ export const orgGroups = [
       ko: "각자의 그룹에서 프로젝트를 이끕니다.",
     },
     memberIds: ["azizbek-arzikulov", "odina-yusupova"],
+  },
+  {
+    id: "staff",
+    title: { en: "Staff", ko: "운영진" },
+    purpose: {
+      en: "Members who help with SUNSET’s operations.",
+      ko: "SUNSET 운영을 돕는 구성원입니다.",
+    },
+    memberIds: ["arif-anzum"],
   },
   {
     id: "advisory-committee",

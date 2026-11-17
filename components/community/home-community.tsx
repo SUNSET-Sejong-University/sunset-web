@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { DisciplineGlyph } from "@/components/community/discipline-glyph";
 import { buildSections } from "@/lib/content/community";
 import { achievements, achievementMember } from "@/lib/content/achievements";
@@ -14,9 +15,12 @@ export function HomeCommunity({ locale }: { locale: Locale }) {
       <ul>{organizations.map((organization) => <li key={organization.slug}><Link href={localizedPath(locale, `partners/${organization.slug}`)}><span>{organization.name}</span><small className="mono">{relationshipLabels[organization.status][locale]} ↗</small></Link></li>)}</ul>
     </div>
     {achievements.slice(0, 1).map((achievement) => <div className="home-achievement" key={achievement.id}>
-      <p className="mono pathway-focus">{communityCopy.achievements.title[locale]} / {achievement.year}</p>
-      <div><h2>{achievement.award[locale]}</h2><p>{achievement.project}</p><p>{achievementMember(achievement.memberId).displayName} · {achievement.event}</p></div>
-      <Link className="text-link" href={localizedPath(locale, "achievements")}>{communityCopy.readAchievement[locale]} →</Link>
+      <div>
+        <p className="mono pathway-focus">{communityCopy.achievements.title[locale]} / {achievement.year}</p>
+        <h2>{achievement.award[locale]}</h2><p>{achievement.project}</p><p>{achievementMember(achievement.memberId).displayName} · {achievement.event}</p>
+        <Link className="text-link" href={localizedPath(locale, "achievements")}>{communityCopy.readAchievement[locale]} →</Link>
+      </div>
+      {achievement.media.slice(0, 1).map((photo) => <Image key={photo.src} src={photo.src} width={photo.width} height={photo.height} sizes="(max-width: 640px) 92vw, 500px" alt={photo.alt[locale]} />)}
     </div>)}
     <div className="home-section-paths" aria-hidden="true">{buildSections.map((section) => <DisciplineGlyph key={section.slug} slug={section.slug} />)}</div>
     <div className="home-sections-link"><p>{communityCopy.sections.description[locale]}</p><Link className="text-link" href={localizedPath(locale, "sections")}>{communityCopy.sections.title[locale]} →</Link></div>

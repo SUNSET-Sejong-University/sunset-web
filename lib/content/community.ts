@@ -5,7 +5,6 @@ export const joinApplication = {
   url: "https://forms.gle/8yM9cvjNWBpxJLZw7",
   embedUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfAw5G4yC7mCMfiPtNRx5nROGNdxZvbhdzpurYmk_UXUSr6ag/viewform?embedded=true",
   copy: {
-    notes: { en: "Planning a project? Contribution notes", ko: "프로젝트를 구상 중인가요? 기여 안내" },
     heading: { en: "Make your next build with us.", ko: "다음 작업을 함께 시작해요." },
     context: { en: "Complete SUNSET’s official recruitment form below. Google hosts the form and handles your responses.", ko: "아래 SUNSET 공식 모집 양식을 작성해 주세요. 양식과 응답은 Google에서 처리합니다." },
     title: { en: "SUNSET recruitment — official Google Form", ko: "SUNSET 모집 — 공식 Google 설문지" },
@@ -27,7 +26,7 @@ export const communityLinks = [
 export const communityCopy = {
   sections: {
     title: { en: "Sections", ko: "활동 분야" },
-    description: { en: "Find a starting point for what you want to make. Six interest areas connect software, physical systems, and creative practice.", ko: "만들고 싶은 것에서 시작하세요. 소프트웨어, 물리 시스템, 창작을 잇는 여섯 가지 관심 분야를 소개합니다." },
+    description: { en: "Find a starting point for what you want to make. Seven interest areas connect software, physical systems, and creative practice.", ko: "만들고 싶은 것에서 시작하세요. 소프트웨어, 물리 시스템, 창작을 잇는 일곱 가지 관심 분야를 소개합니다." },
   },
   partners: {
     title: { en: "Partners & Sponsors", ko: "파트너 및 후원사" },
@@ -45,7 +44,6 @@ export const communityCopy = {
   meetPartners: { en: "Meet our partner & sponsor", ko: "파트너 및 후원사 소개" },
   readAchievement: { en: "Read the achievement", ko: "성과 기록 보기" },
   formAction: { en: "Go to the official application form", ko: "공식 지원 양식으로 이동" },
-  sectionNote: { en: "Six interest areas, separate from organizational roles. Exploring a pathway does not save or submit your choice.", ko: "조직 내 직책과 구분되는 여섯 관심 분야입니다. 경로를 둘러보는 것만으로 선택이 저장되거나 제출되지는 않습니다." },
   sectionFormNote: { en: "When applying, describe the field you would like to explore wherever the form allows. No section selection is sent from this website.", ko: "지원 양식에 작성할 수 있는 항목이 있다면 탐구하고 싶은 분야를 적어 주세요. 이 웹사이트에서 분야 선택 정보를 전송하지는 않습니다." },
 } satisfies Record<string, LocalizedStrings | { title: LocalizedStrings; description: LocalizedStrings }>;
 
@@ -55,14 +53,14 @@ type BuildSection = {
   focus: LocalizedStrings;
   description: LocalizedStrings;
   memberId?: string;
-  associatedName?: string;
 };
 
 export const buildSections: readonly BuildSection[] = [
-  { slug: "full-stack", title: { en: "Full Stack", ko: "풀스택" }, focus: { en: "Interface → system", ko: "인터페이스 → 시스템" }, description: { en: "Explore web interfaces, APIs, and the systems that connect them. Think through a complete path from a user action to a useful result.", ko: "웹 인터페이스와 API, 이를 연결하는 시스템을 탐구합니다. 사용자의 행동이 유용한 결과로 이어지는 전체 흐름을 생각합니다." } },
-  { slug: "app-development", title: { en: "App Development", ko: "앱 개발" }, focus: { en: "Interaction → everyday use", ko: "상호작용 → 일상 속 사용" }, description: { en: "Explore mobile experiences, device capabilities, and accessible interaction. Shape ideas around how people use an app in everyday life.", ko: "모바일 경험, 기기 기능, 접근성 있는 상호작용을 탐구합니다. 일상에서 앱을 사용하는 방식에 맞춰 아이디어를 구체화합니다." } },
+  { slug: "full-stack", title: { en: "Full Stack Web Development", ko: "풀스택 웹 개발" }, focus: { en: "Interface → system", ko: "인터페이스 → 시스템" }, description: { en: "Explore web interfaces, APIs, and the systems that connect them. Think through a complete path from a user action to a useful result.", ko: "웹 인터페이스와 API, 이를 연결하는 시스템을 탐구합니다. 사용자의 행동이 유용한 결과로 이어지는 전체 흐름을 생각합니다." } },
+  { slug: "app-development", title: { en: "App Development", ko: "앱 개발" }, focus: { en: "Interaction → everyday use", ko: "상호작용 → 일상 속 사용" }, description: { en: "Explore mobile experiences, device capabilities, and accessible interaction. Shape ideas around how people use an app in everyday life.", ko: "모바일 경험, 기기 기능, 접근성 있는 상호작용을 탐구합니다. 일상에서 앱을 사용하는 방식에 맞춰 아이디어를 구체화합니다." }, memberId: "adalat-alizada" },
   { slug: "game-dev", title: { en: "Game Dev", ko: "게임 개발" }, focus: { en: "Rules → play", ko: "규칙 → 플레이" }, description: { en: "Explore mechanics, interactive worlds, and playable prototypes. Use play to investigate how code, art, and sound work together.", ko: "게임 규칙과 상호작용하는 세계, 플레이 가능한 프로토타입을 탐구합니다. 코드, 아트, 사운드가 함께 작동하는 방식을 살펴봅니다." } },
-  { slug: "creative-arts", title: { en: "Creative Arts", ko: "크리에이티브 아트" }, focus: { en: "Expression → experience", ko: "표현 → 경험" }, description: { en: "Explore visual storytelling, sound, design, and creative coding. Connect artistic questions with tools for making interactive experiences.", ko: "시각적 스토리텔링, 사운드, 디자인, 크리에이티브 코딩을 탐구합니다. 예술적 질문을 인터랙티브 경험을 만드는 도구와 연결합니다." }, associatedName: "Arif Anzum" },
-  { slug: "embedded-systems", title: { en: "Embedded Systems", ko: "임베디드 시스템" }, focus: { en: "Signal → physical response", ko: "신호 → 물리적 반응" }, description: { en: "Explore electronics, firmware, sensors, and control. Follow the path from a measured signal to a physical response.", ko: "전자 회로, 펌웨어, 센서, 제어를 탐구합니다. 측정된 신호가 물리적 반응으로 이어지는 경로를 살펴봅니다." } },
+  { slug: "creative-arts", title: { en: "Creative Arts", ko: "크리에이티브 아트" }, focus: { en: "Expression → experience", ko: "표현 → 경험" }, description: { en: "Explore visual storytelling, sound, design, and creative coding. Connect artistic questions with tools for making interactive experiences.", ko: "시각적 스토리텔링, 사운드, 디자인, 크리에이티브 코딩을 탐구합니다. 예술적 질문을 인터랙티브 경험을 만드는 도구와 연결합니다." }, memberId: "arif-anzum" },
+  { slug: "embedded-systems", title: { en: "Embedded Systems", ko: "임베디드 시스템" }, focus: { en: "Signal → physical response", ko: "신호 → 물리적 반응" }, description: { en: "Explore electronics, firmware, sensors, and control. Follow the path from a measured signal to a physical response.", ko: "전자 회로, 펌웨어, 센서, 제어를 탐구합니다. 측정된 신호가 물리적 반응으로 이어지는 경로를 살펴봅니다." }, memberId: "myint-myat-aung" },
+  { slug: "software-engineering", title: { en: "Software Engineering", ko: "소프트웨어 공학" }, focus: { en: "Design → dependable software", ko: "설계 → 신뢰할 수 있는 소프트웨어" }, description: { en: "Explore software design, testing, and maintenance. Learn how clear interfaces and repeatable checks help a codebase evolve.", ko: "소프트웨어 설계, 테스트, 유지보수를 탐구합니다. 명확한 인터페이스와 반복 가능한 검증을 통해 코드베이스를 개선하는 방법을 배웁니다." } },
   { slug: "space-sciences", title: { en: "Space Sciences", ko: "우주 과학" }, focus: { en: "Observation → understanding", ko: "관측 → 이해" }, description: { en: "Explore questions about space through observation, computation, and scientific models. Start with a question that can be investigated and documented.", ko: "관측, 계산, 과학적 모델로 우주에 관한 질문을 탐구합니다. 조사하고 기록할 수 있는 질문에서 시작합니다." } },
 ];

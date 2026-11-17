@@ -8,7 +8,7 @@ export type Organization = {
   description: LocalizedStrings;
   website: string;
   sources: readonly { label: string; url: string }[];
-  logo: { kind: "wordmark" } | { kind: "image"; src: string; alt: string };
+  logo: { kind: "wordmark" } | { kind: "image"; src: string; alt: string; width: number; height: number };
 };
 
 // Relationship statuses confirmed by the owner, 2026-11-10. No terms inferred.
@@ -21,7 +21,8 @@ export const organizations: readonly Organization[] = [
     sources: [{ label: "PCBWay · Future Innovators Program", url: "https://www.pcbway.com/project/sponsor/future-innovators-program.html" }],
   },
   {
-    slug: "tuya", name: "Tuya", status: "sponsor", logo: { kind: "wordmark" },
+    slug: "tuya", name: "Tuya", status: "sponsor",
+    logo: { kind: "image", src: "/brand/tuya-tuyaopen.webp", alt: "Tuya and TuyaOpen", width: 1120, height: 162 },
     field: { en: "AI cloud & connected devices", ko: "AI 클라우드 및 연결 기기" },
     description: { en: "Tuya provides an AI cloud platform and tools for connected products. Its developer ecosystem includes TuyaOS, app development tools, and cloud APIs for building and connecting smart devices.", ko: "Tuya는 연결 기기를 위한 AI 클라우드 플랫폼과 개발 도구를 제공합니다. 개발 생태계에는 스마트 기기를 만들고 연결하기 위한 TuyaOS, 앱 개발 도구, 클라우드 API가 포함됩니다." },
     website: "https://www.tuya.com/",

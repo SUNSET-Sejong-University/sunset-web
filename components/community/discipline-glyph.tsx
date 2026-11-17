@@ -18,6 +18,9 @@ export function DisciplineGlyph({ slug, className }: DisciplineGlyphProps) {
     </> : slug === "embedded-systems" ? <>
       <rect x="24" y="16" width="32" height="32" /><path d="M32 6v10 M48 6v10 M32 48v10 M48 48v10 M12 24h12 M12 40h12 M56 24h12 M56 40h12 M32 24h16v16H32z" />
       <circle cx="12" cy="24" r="3" /><circle cx="68" cy="40" r="3" />
+    </> : slug === "software-engineering" ? <>
+      <rect x="8" y="12" width="28" height="19" rx="2" /><rect x="44" y="34" width="28" height="19" rx="2" />
+      <path d="M36 21h20v13 M22 31v13h22 M52 43l4 4 8-8 M16 21h12" />
     </> : <>
       <circle cx="40" cy="32" r="10" /><ellipse cx="40" cy="32" rx="33" ry="17" transform="rotate(-28 40 32)" />
       <path d="M40 5v8 M40 51v8 M6 32h9 M65 32h9" /><circle cx="65" cy="16" r="3" />
