@@ -54,7 +54,7 @@ test.describe("client navigation visibility", () => {
     await page.goto("/en");
     await expectMainContentVisible(page);
 
-    await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "Projects" }).click();
+    await page.getByRole("navigation", { name: /Primary|주 메뉴/ }).getByRole("link", { name: "Projects" }).click();
     await expect(page).toHaveURL(/\/en\/projects$/);
     await expectMainContentVisible(page);
 
@@ -66,11 +66,11 @@ test.describe("client navigation visibility", () => {
     await expect(page).toHaveURL(/\/en\/people$/);
     await expectMainContentVisible(page);
 
-    await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "About" }).click();
+    await page.getByRole("navigation", { name: /Primary|주 메뉴/ }).getByRole("link", { name: "About" }).click();
     await expect(page).toHaveURL(/\/en\/about$/);
     await expectMainContentVisible(page);
 
-    await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "Join" }).click();
+    await page.getByRole("navigation", { name: /Primary|주 메뉴/ }).getByRole("link", { name: "Join" }).click();
     await expect(page).toHaveURL(/\/en\/join$/);
     await expectMainContentVisible(page);
 
@@ -78,7 +78,7 @@ test.describe("client navigation visibility", () => {
     await expect(page).toHaveURL(/\/ko\/join$/);
     await expectMainContentVisible(page);
 
-    await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: /프로젝트|Projects/i }).click();
+    await page.getByRole("navigation", { name: /Primary|주 메뉴/ }).getByRole("link", { name: /프로젝트|Projects/i }).click();
     await expect(page).toHaveURL(/\/ko\/projects$/);
     await expectMainContentVisible(page);
   });
@@ -92,17 +92,17 @@ test.describe("client navigation visibility", () => {
     };
 
     await openMenu();
-    await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "Projects" }).click();
+    await page.getByRole("navigation", { name: /Primary|주 메뉴/ }).getByRole("link", { name: "Projects" }).click();
     await expect(page).toHaveURL(/\/en\/projects$/);
     await expectMainContentVisible(page);
 
     await openMenu();
-    await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "People" }).click();
+    await page.getByRole("navigation", { name: /Primary|주 메뉴/ }).getByRole("link", { name: "People" }).click();
     await expect(page).toHaveURL(/\/en\/people$/);
     await expectMainContentVisible(page);
 
     await openMenu();
-    await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "Timeline" }).click();
+    await page.getByRole("navigation", { name: /Primary|주 메뉴/ }).getByRole("link", { name: "Timeline" }).click();
     await expect(page).toHaveURL(/\/en\/timeline$/);
     await expectMainContentVisible(page);
   });
@@ -111,11 +111,11 @@ test.describe("client navigation visibility", () => {
     await page.goto("/ko");
     await expectMainContentVisible(page);
 
-    await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: /프로젝트|Projects/i }).click();
+    await page.getByRole("navigation", { name: /Primary|주 메뉴/ }).getByRole("link", { name: /프로젝트|Projects/i }).click();
     await expect(page).toHaveURL(/\/ko\/projects$/);
     await expectMainContentVisible(page);
 
-    await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: /소개|About/i }).click();
+    await page.getByRole("navigation", { name: /Primary|주 메뉴/ }).getByRole("link", { name: /소개|About/i }).click();
     await expect(page).toHaveURL(/\/ko\/about$/);
     await expectMainContentVisible(page);
 
@@ -324,7 +324,7 @@ test.describe("reveal fallback", () => {
   test("reduced motion keeps route content visible after navigation", async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/en");
-    await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "Projects" }).click();
+    await page.getByRole("navigation", { name: /Primary|주 메뉴/ }).getByRole("link", { name: "Projects" }).click();
     await expect(page).toHaveURL(/\/en\/projects$/);
     await expectMainContentVisible(page);
   });
@@ -363,9 +363,8 @@ test.describe("probe open state", () => {
     expect(itemPadding.left).toBeGreaterThanOrEqual(10);
     expect(itemPadding.top).toBeGreaterThanOrEqual(10);
 
-    // keyboard hints are visible with bordered inner spacing
-    const escHint = dialog.locator(".probe-esc");
-    await expect(escHint).toBeVisible();
+    const close = dialog.getByRole("button", { name: "Close command palette" });
+    await expect(close).toBeVisible();
     const footKbds = dialog.locator(".probe-foot kbd");
     expect(await footKbds.count()).toBeGreaterThanOrEqual(3);
     const kbdPadding = await footKbds.first().evaluate((node) => {
@@ -379,6 +378,14 @@ test.describe("probe open state", () => {
     expect(kbdPadding.border).not.toBe("0px");
 
     await page.keyboard.press("Escape");
+    await expect(dialog).toBeHidden();
+    await expect(page.locator(".probe-trigger")).toBeFocused();
+
+    await page.keyboard.press("Control+K");
+    await expect(input).toBeFocused();
+    await page.keyboard.press("Shift+Tab");
+    await expect(close).toBeFocused();
+    await page.keyboard.press("Enter");
     await expect(dialog).toBeHidden();
   }
 
@@ -408,6 +415,8 @@ test.describe("probe open state", () => {
         expect(box.x).toBeGreaterThanOrEqual(0);
         expect(box.x + box.width).toBeLessThanOrEqual(width);
       }
+      await page.getByRole("button", { name: "Close command palette" }).click();
+      await expect(panel).toBeHidden();
     });
   }
 

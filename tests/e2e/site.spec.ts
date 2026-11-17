@@ -90,7 +90,7 @@ test.describe("navigation and localization", () => {
   test("mobile menu opens and closes with Escape", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/en");
-    const nav = page.getByRole("navigation", { name: "Primary" });
+    const nav = page.getByRole("navigation", { name: /Primary|주 메뉴/ });
     const menuToggle = page.getByRole("button", {
       name: /Open menu|Close menu|메뉴 열기|메뉴 닫기/i,
     });
@@ -100,7 +100,7 @@ test.describe("navigation and localization", () => {
     await expect(nav.getByRole("link", { name: "People" })).toBeVisible();
     await page.keyboard.press("Escape");
     await expect(page.getByRole("button", { name: /Open menu|메뉴 열기/i })).toBeVisible();
-    await expect(nav).not.toHaveClass(/is-open/);
+    await expect(nav).toBeHidden();
   });
 });
 
@@ -164,19 +164,19 @@ test.describe("content invariants", () => {
 
 test.describe("people groups and organization structure", () => {
   const groupTitles = {
-    en: ["Founding Members", "Section Leads", "Advisory Committee", "Mentors"],
-    ko: ["창립 멤버", "섹션 리드", "자문위원회", "멘토"],
+    en: ["Founding Members", "Section Leads", "Staff", "Advisory Committee", "Mentors"],
+    ko: ["창립 멤버", "섹션 리드", "운영진", "자문위원회", "멘토"],
   } as const;
 
   for (const lang of ["en", "ko"] as const) {
-    test(`${lang} people page shows all four groups`, async ({ page }) => {
+    test(`${lang} people page shows all organization groups`, async ({ page }) => {
       await page.goto(`/${lang}/people`);
       for (const title of groupTitles[lang]) {
         await expect(page.getByRole("heading", { level: 3, name: title, exact: true })).toBeVisible();
       }
     });
 
-    test(`${lang} structure page lists all four groups and unverified relationships`, async ({
+    test(`${lang} structure page lists all organization groups and unverified relationships`, async ({
       page,
     }) => {
       await page.goto(`/${lang}/people/structure`);
@@ -192,10 +192,13 @@ test.describe("people groups and organization structure", () => {
     const founding = page.locator("#founding-members");
     await expect(founding.getByRole("heading", { level: 4, name: "Prithwis Das" })).toBeVisible();
 
+    await expect(founding.getByRole("heading", { level: 4, name: "Azizbek Arzikulov" })).toBeVisible();
+    await expect(page.locator("#staff")).toContainText("Arif Anzum");
+
     const leads = page.locator("#section-leads");
     await expect(leads.getByRole("article")).toHaveCount(2);
     await expect(leads.getByRole("heading", { level: 4, name: "Azizbek Arzikulov" })).toBeVisible();
-    await expect(leads).toContainText("Full-Stack Development / Engineering");
+    await expect(leads).toContainText("Full Stack Web Development / Engineering");
     await expect(leads.getByRole("heading", { level: 4, name: "Odina Yusupova" })).toBeVisible();
     await expect(leads).toContainText("Business");
     await expect(leads.getByRole("link", { name: /Azizbek Arzikulov — LinkedIn/ })).toHaveAttribute(

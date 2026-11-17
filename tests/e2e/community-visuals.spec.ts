@@ -18,6 +18,7 @@ for (const locale of ["en", "ko"] as const) {
     await contacts.nth(1).click();
     await expect(rail.getByRole("status")).toContainText(`02 / 02 · Tuya · ${locale === "en" ? "Sponsor" : "후원사"}`);
     await expect(rail.locator(".brand-slide h2")).toHaveText("Tuya");
+    await expect(rail.getByRole("img", { name: "Tuya and TuyaOpen" })).toBeVisible();
     await contacts.nth(1).press("ArrowLeft");
     await expect(rail.getByRole("status")).toContainText("PCBWay");
     await contacts.nth(0).press("End");
@@ -44,17 +45,21 @@ for (const locale of ["en", "ko"] as const) {
 
   test(`${locale} section map and code-derived pipeline expose real content`, async ({ page }) => {
     await page.goto(`/${locale}/sections`);
-    await expect(page.locator(".pathway-map-board a")).toHaveCount(6);
+    await expect(page.locator(".pathway-map-board a")).toHaveCount(7);
     await page.locator('.pathway-map-board a[href="#creative-arts"]').click();
     await expect(page).toHaveURL(/#creative-arts$/);
     await expect(page.locator("#creative-arts")).toContainText("Arif Anzum");
+    await expect(page.locator("#embedded-systems")).toContainText("Myint Myat Aung");
+    await expect(page.locator("#app-development")).toContainText("Adalat Alizada");
+    await expect(page.locator("#software-engineering")).toBeVisible();
+    await expect(page.locator("#full-stack")).toContainText(locale === "en" ? "Full Stack Web Development" : "풀스택 웹 개발");
     await page.goto(`/${locale}/achievements`);
     const pipeline = page.locator(".gitguardian-pipeline");
     await expect(pipeline.locator("li")).toHaveCount(5);
     await pipeline.getByRole("button").nth(4).click();
     await expect(pipeline.locator(".pipeline-readout")).toContainText("generate_analysis");
     await expect(pipeline.locator('a[href$="/apps/agent/graph.py"]')).toBeVisible();
-    await expect(page.locator(".achievement-award")).toContainText("Track Winner");
+    await expect(page.locator("#gitguardian-seoul-bowl-2025 .achievement-award")).toContainText("Track Winner");
   });
 
   test(`${locale} no-JavaScript directory keeps both profiles discoverable`, async ({ browser }) => {
@@ -80,10 +85,17 @@ for (const locale of ["en", "ko"] as const) {
         const failedAssets: string[] = [];
         page.on("console", (message) => { if (message.type() === "error") consoleErrors.push(message.text()); });
         page.on("response", (response) => { if (response.status() >= 400) failedAssets.push(`${response.status()} ${new URL(response.url()).pathname}`); });
-        for (const segment of ["", "sections", "partners", "partners/pcbway", "partners/tuya", "achievements", "join"]) {
+        for (const segment of ["", "sections", "partners", "partners/pcbway", "partners/tuya", "achievements", "join", "people", "about"]) {
           await page.goto(`/${locale}${segment ? `/${segment}` : ""}`);
           await expect(page.locator("main h1")).toBeVisible();
           expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
+          const media = page.locator(".achievement-media img, .home-achievement img");
+          await media.evaluateAll((images) => Promise.all(images.map(async (image) => {
+            if (image instanceof HTMLImageElement) {
+              image.loading = "eager";
+              await image.decode();
+            }
+          })));
           await page.screenshot({ path: join(output, `${locale}-${colorScheme}-${width}-${segment.replaceAll("/", "-") || "home"}.png`), fullPage: true });
         }
         writeFileSync(join(output, `${locale}-${colorScheme}-${width}-diagnostics.json`), JSON.stringify({ consoleErrors, failedAssets }, null, 2));

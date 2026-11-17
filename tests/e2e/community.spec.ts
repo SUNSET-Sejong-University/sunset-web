@@ -25,7 +25,12 @@ for (const locale of ["en", "ko"] as const) {
         await expect(page.locator(`[data-locale="${locale}"]`)).toHaveAttribute("lang", locale);
         expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
         for (const image of await page.locator("main img").all()) {
-          expect(await image.evaluate((element) => element instanceof HTMLImageElement && element.complete && element.naturalWidth > 0)).toBeTruthy();
+          expect(await image.evaluate(async (element) => {
+            if (!(element instanceof HTMLImageElement)) return false;
+            element.loading = "eager";
+            await element.decode();
+            return element.naturalWidth > 0;
+          })).toBeTruthy();
         }
         expect(exceptions).toEqual([]);
         const accessibility = await new AxeBuilder({ page }).include("main").withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
@@ -59,8 +64,8 @@ for (const locale of ["en", "ko"] as const) {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto(`/${locale}/people`);
     const founding = page.locator("#founding-members");
-    await expect(founding.getByRole("article")).toHaveCount(3);
-    for (const name of ["Prithwis Das", "최종우", "Odina Yusupova"]) {
+    await expect(founding.getByRole("article")).toHaveCount(4);
+    for (const name of ["Prithwis Das", "최종우", "Odina Yusupova", "Azizbek Arzikulov"]) {
       const card = founding.getByRole("article").filter({ has: page.getByRole("heading", { name, exact: true }) });
       await expect(card.locator(".founder-label")).toHaveText(locale === "en" ? "Founder" : "창립자");
       if (name === "최종우") await expect(card.locator(".role")).toContainText("HR");
@@ -75,6 +80,7 @@ for (const locale of ["en", "ko"] as const) {
     await page.goto(`/${locale}/join`);
     await expect(page.locator('main a[href^="mailto:"]')).toHaveCount(0);
     await expect(page.getByRole("heading", { name: /Proposal process|제안 절차/ })).toHaveCount(0);
+    await expect(page.locator(".join-notes")).toHaveCount(0);
     const frame = page.locator(".join-form-frame iframe");
     await expect(frame).toHaveAttribute("src", "https://docs.google.com/forms/d/e/1FAIpQLSfAw5G4yC7mCMfiPtNRx5nROGNdxZvbhdzpurYmk_UXUSr6ag/viewform?embedded=true");
     await expect(frame).toHaveAttribute("title", locale === "en" ? "SUNSET recruitment — official Google Form" : "SUNSET 모집 — 공식 Google 설문지");
@@ -92,13 +98,24 @@ for (const locale of ["en", "ko"] as const) {
 
   test(`${locale} achievement credits the existing member and canonical repository`, async ({ page }) => {
     await page.goto(`/${locale}/achievements`);
-    await expect(page.locator(".achievement-award")).toContainText("Track Winner");
-    await expect(page.locator(".achievement-award")).not.toContainText(/grand prize|first place|champion/i);
-    await expect(page.locator(".achievement-record")).toContainText("2025");
-    await expect(page.locator(".achievement-person")).toHaveAttribute("href", `/${locale}/people#person-azizbek-arzikulov`);
+    const scoop = page.locator("#gitguardian-seoul-bowl-2025");
+    await expect(scoop.getByRole("img")).toBeVisible();
+    await expect(page.locator("#latchops-daytona .achievement-award")).toHaveText(locale === "en" ? "First Place" : "1위");
+    await expect(page.locator("#buildin-github-love-of-code").getByRole("img")).toHaveCount(2);
+    await expect(page.locator("#tolkyn-arduino-feature .achievement-award")).toHaveText(locale === "en" ? "Featured by Arduino" : "Arduino 공식 소개");
+    await expect(scoop.locator(".achievement-award")).toContainText("Track Winner");
+    await expect(scoop.locator(".achievement-award")).not.toContainText(/grand prize|first place|champion/i);
+    await expect(scoop).toContainText("2025");
+    await expect(scoop.locator(".achievement-person")).toHaveAttribute("href", `/${locale}/people#person-azizbek-arzikulov`);
     await expect(page.locator('main a[href="https://github.com/azizbekdevuz/gitguardian"]')).toBeVisible();
-    await page.locator(".achievement-person").click();
+    await scoop.locator(".achievement-person").click();
     await expect(page.locator("#person-azizbek-arzikulov")).toContainText("Azizbek Arzikulov");
+  });
+
+  test(`${locale} About links to the official application`, async ({ page }) => {
+    await page.goto(`/${locale}/about`);
+    await expect(page.getByRole("link", { name: locale === "en" ? "Apply to Club" : "동아리 지원하기" }))
+      .toHaveAttribute("href", "https://forms.gle/8yM9cvjNWBpxJLZw7");
   });
 
   test(`${locale} homepage, header, profiles, footer, and mobile PROBE link the archive`, async ({ page }) => {
@@ -151,4 +168,18 @@ test("community navigation supports keyboard and Escape", async ({ page }) => {
   await expect(page.locator('#community-menu a[href="/en/people"]')).toBeFocused();
   await page.keyboard.press("Escape");
   await expect(page.locator("#community-menu")).toBeHidden();
+});
+
+test("mobile menu keeps collapsed links out of keyboard navigation", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  await page.goto("/en");
+  const nav = page.getByRole("navigation", { name: "Primary" });
+  const toggle = page.locator(".nav-toggle");
+  await expect(nav).toBeHidden();
+  await toggle.focus();
+  await page.keyboard.press("Enter");
+  await expect(nav.getByRole("link", { name: "Home" })).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(nav).toBeHidden();
+  await expect(toggle).toBeFocused();
 });

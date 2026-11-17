@@ -230,19 +230,19 @@ test.describe("screenshots", () => {
       }
 
       if ("action" in config && config.action === "nav-projects") {
-        await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "Projects" }).click();
+        await page.getByRole("navigation", { name: /Primary|주 메뉴/ }).getByRole("link", { name: "Projects" }).click();
         await expect(page).toHaveURL(/\/en\/projects$/);
         await page.waitForTimeout(300);
       }
 
       if ("action" in config && config.action === "nav-about") {
-        await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "About" }).click();
+        await page.getByRole("navigation", { name: /Primary|주 메뉴/ }).getByRole("link", { name: "About" }).click();
         await expect(page).toHaveURL(/\/en\/about$/);
         await page.waitForTimeout(300);
       }
 
       if ("action" in config && config.action === "nav-ko-projects") {
-        await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: /프로젝트|Projects/i }).click();
+        await page.getByRole("navigation", { name: /Primary|주 메뉴/ }).getByRole("link", { name: /프로젝트|Projects/i }).click();
         await expect(page).toHaveURL(/\/ko\/projects$/);
         await page.waitForTimeout(300);
       }
@@ -255,6 +255,12 @@ test.describe("screenshots", () => {
       }
 
       if ("clip" in config && config.clip === "footer") {
+        await page.locator(".brand-lockup").evaluate(async (mark) => {
+          if (mark instanceof HTMLImageElement) {
+            mark.loading = "eager";
+            await mark.decode();
+          }
+        });
         await page.locator("footer.site-footer").screenshot({
           path: join(outputDir, `${name}.png`),
         });
