@@ -21,3 +21,11 @@ Initial manifest created during Phase 0. Assets are local copies or original SVG
 - Real repository screenshots and photos were not copied during Phase 0 because remote media paths were not verified in this workspace session.
 - Generated diagrams are labeled "System diagram" on case-study pages.
 - Replace diagram-only entries with verified repository media when source paths are confirmed.
+
+## Community assets — 2026-11-17
+
+- `public/brand/tuya-tuyaopen.webp`: supplied Tuya/TuyaOpen lockup, clear-space plate in the sponsor showcase and profile. The original colors, separator, and both marks are retained.
+- `public/brand/sunset-lockup.webp`, `public/brand/sunset-symbol.webp`, `app/favicon.ico`: derived from the supplied SUNSET artwork. Footer uses the full lockup; header and favicon use the sun symbol.
+- `public/images/achievements/seoul-bowl.webp` and `latchops-daytona.webp`: supplied event photography, used in Achievements. Seoul Bowl photo also appears on the homepage.
+- `public/images/achievements/buildin-project.webp`: [GitHub Blog’s BuildIn photos](https://github.blog/wp-content/uploads/2025/10/buildin.png). `buildin-honors.webp` is cropped from the supplied profile screenshot.
+- `public/images/achievements/tolkyn-project.webp`: [Prithwis Das’s build-guide cover](https://www.instructables.com/Tolkyn-Turning-Invisible-Rhythm-Into-Living-Archit/), linked by Arduino.

@@ -217,7 +217,7 @@ Stack definitions:
 - **Low-radius geometry:** 2–4px on controls and cards; 50% only for dots and vias. Avoid `rounded-3xl`.
 - **Depth:** layered mask surfaces, lead lines, copper border shifts, subtle translate on hover — not blur/glass.
 - **Asymmetric editorial** layouts; variable flagship scale on homepage and projects index.
-- **Sticky header:** 72px, chip mark (`SunsetChipMark`), nav, Probe trigger, language switch.
+- **Sticky header:** 72px, official SUNSET symbol, nav, Probe trigger, language switch.
 
 ## 6. Case-study diagram grammar
 
@@ -256,9 +256,9 @@ Reduced motion: static board, instant reveals, no traveling scope stroke, no poi
 
 ## 8. Brand assets
 
-- **Chip mark:** `components/brand/SunsetChipMark.tsx` — IC outline, phosphor center via, copper stroke, pad leads.
+- **SUNSET mark:** `components/brand/sunset-mark.tsx` renders the supplied symbol in the header and the full lockup in the footer. The favicon uses the same symbol.
 - **Wordmark:** SUNSET mono in header; full name on About.
-- **Favicon / theme:** `#050607` void via `app/icon.tsx` and layout metadata.
+- **Favicon / theme:** Supplied SUNSET sun in `app/favicon.ico`; theme color remains part of layout metadata.
 
 ## 9. Page direction
 
@@ -270,7 +270,7 @@ Reduced motion: static board, instant reveals, no traveling scope stroke, no poi
 | **People** | Contributor grid with copper role accents |
 | **Timeline** | Chronological signal log with GitHub activity labels |
 | **About** | Board hero (seed 23), stats, terminal origin block, values, people grid |
-| **Join** | Checklist panels, confirmed contact path |
+| **Join** | Official application embed and direct fallback |
 
 ## 10. Responsive breakpoints
 

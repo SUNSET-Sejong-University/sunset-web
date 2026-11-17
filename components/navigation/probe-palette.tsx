@@ -3,7 +3,9 @@
 import { communityLinks } from "@/lib/content/community";
 
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { usePathname, useRouter } from "next/navigation";
+import { ArrowUpRight, Compass, FileCode2, Hash, Mail, Search, X } from "lucide-react";
 
 import { ORG_CONTACT_EMAIL } from "@/lib/content/org";
 import { projects } from "@/lib/content/projects/data";
@@ -52,6 +54,7 @@ export function ProbePalette({ locale, labels }: ProbePaletteProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
   const listId = useId();
   const dialogTitleId = useId();
 
@@ -136,7 +139,7 @@ export function ProbePalette({ locale, labels }: ProbePaletteProps) {
       });
       project.repositories.forEach((repo) => {
         base.push({
-          id: `repo-${repo.name}`,
+          id: `repo-${project.slug}-${repo.name}`,
           label: c.projectRepo.replace("{name}", repo.name),
           sub: c.subRepo,
           run: () => window.open(repo.url, "_blank", "noopener"),
@@ -167,7 +170,7 @@ export function ProbePalette({ locale, labels }: ProbePaletteProps) {
     setOpen(true);
     setQuery("");
     setActiveIndex(0);
-    window.setTimeout(() => inputRef.current?.focus(), 10);
+    window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 10);
   }, []);
 
   const runActive = useCallback(() => {
@@ -224,7 +227,11 @@ export function ProbePalette({ locale, labels }: ProbePaletteProps) {
       if (event.key === "Escape") {
         event.preventDefault();
         close();
-      } else if (event.key === "ArrowDown") {
+        event.stopPropagation();
+        return;
+      }
+      if (event.target !== inputRef.current || event.isComposing) return;
+      if (event.key === "ArrowDown") {
         event.preventDefault();
         setActiveIndex((i) => Math.min(i + 1, Math.max(filtered.length - 1, 0)));
       } else if (event.key === "ArrowUp") {
@@ -235,9 +242,20 @@ export function ProbePalette({ locale, labels }: ProbePaletteProps) {
         runActive();
       }
     };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    window.addEventListener("keydown", onKeyDown, true);
+    return () => window.removeEventListener("keydown", onKeyDown, true);
   }, [close, filtered.length, open, openProbe, runActive]);
+
+  const activeCommand = filtered[activeIndex];
+  useEffect(() => {
+    const results = resultsRef.current;
+    const item = activeCommand && document.getElementById(`probe-item-${activeCommand.id}`);
+    if (!open || !results || !item) return;
+    const viewport = results.getBoundingClientRect();
+    const option = item.getBoundingClientRect();
+    if (option.bottom > viewport.bottom) results.scrollTop += option.bottom - viewport.bottom;
+    if (option.top < viewport.top) results.scrollTop -= viewport.top - option.top;
+  }, [activeCommand, open]);
 
   useEffect(() => {
     if (open) {
@@ -261,12 +279,12 @@ export function ProbePalette({ locale, labels }: ProbePaletteProps) {
         aria-expanded={open}
         onClick={openProbe}
       >
-        <span className="probe-trigger-dot" aria-hidden />
+        <Search size={16} aria-hidden />
         <span className="probe-trigger-text">{labels.trigger}</span>
         <kbd>⌘K</kbd>
       </button>
 
-      {open ? (
+      {open ? createPortal(
         <div
           className="probe-overlay"
           role="presentation"
@@ -280,14 +298,14 @@ export function ProbePalette({ locale, labels }: ProbePaletteProps) {
             role="dialog"
             aria-modal="true"
             aria-labelledby={dialogTitleId}
+            lang={locale}
           >
             <div className="probe-head mono">
               <span id={dialogTitleId}>{labels.title}</span>
+              <button type="button" className="probe-close shell-control shell-control--icon" aria-label={labels.closeLabel} onClick={close}><X size={18} aria-hidden /></button>
             </div>
             <div className="probe-input-row">
-              <span className="probe-prompt mono" aria-hidden>
-                &gt;
-              </span>
+              <Search className="probe-prompt" size={17} aria-hidden />
               <input
                 ref={inputRef}
                 className="probe-input mono"
@@ -297,6 +315,7 @@ export function ProbePalette({ locale, labels }: ProbePaletteProps) {
                 aria-autocomplete="list"
                 value={query}
                 placeholder={labels.placeholder}
+                aria-label={labels.placeholder}
                 aria-controls={listId}
                 aria-activedescendant={
                   filtered[activeIndex] ? `probe-item-${filtered[activeIndex].id}` : undefined
@@ -306,15 +325,18 @@ export function ProbePalette({ locale, labels }: ProbePaletteProps) {
                   setActiveIndex(0);
                 }}
               />
-              <kbd className="probe-esc" aria-hidden>
-                ESC
-              </kbd>
             </div>
-            <div className="probe-results" id={listId} role="listbox">
+            <div ref={resultsRef} className="probe-results" id={listId} role="listbox">
               {filtered.length === 0 ? (
                 <div className="probe-empty">{labels.empty}</div>
               ) : (
-                filtered.map((cmd, index) => (
+                filtered.map((cmd, index) => {
+                  const Icon = cmd.sub === labels.commands.subSection ? Hash
+                    : cmd.sub === labels.commands.subContact ? Mail
+                    : cmd.sub === labels.commands.subProject ? FileCode2
+                    : cmd.sub === labels.commands.subRepo || cmd.sub === labels.commands.subExternal ? ArrowUpRight
+                    : Compass;
+                  return (
                   <div
                     key={cmd.id}
                     id={`probe-item-${cmd.id}`}
@@ -328,12 +350,13 @@ export function ProbePalette({ locale, labels }: ProbePaletteProps) {
                     }}
                   >
                     <div className="probe-item-main">
-                      <span className="probe-item-icon" aria-hidden />
+                      <Icon className="probe-item-icon" size={16} aria-hidden />
                       <span className="probe-item-label">{cmd.label}</span>
                     </div>
                     <span className="probe-item-sub">{cmd.sub}</span>
                   </div>
-                ))
+                  );
+                })
               )}
             </div>
             <div className="probe-foot mono">
@@ -342,7 +365,8 @@ export function ProbePalette({ locale, labels }: ProbePaletteProps) {
               <ProbeHint hint={labels.footClose} />
             </div>
           </div>
-        </div>
+        </div>,
+        document.body,
       ) : null}
     </>
   );

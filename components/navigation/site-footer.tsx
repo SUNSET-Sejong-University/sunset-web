@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { ArrowUpRight, Github, Mail } from "lucide-react";
 
-import { SunsetChipMark } from "@/components/brand/SunsetChipMark";
+import { SunsetMark } from "@/components/brand/sunset-mark";
 import { communityLinks } from "@/lib/content/community";
 import { WEBSITE_DEVELOPER } from "@/lib/content/developer";
 import { ORG_CONTACT, ORG_FULL_NAME } from "@/lib/content/org";
@@ -25,18 +26,12 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
         </div>
         <div className="footer-grid">
           <div className="footer-brand">
-            <div className="brand">
-              <SunsetChipMark />
-              <span>
-                {dictionary.site.name}
-                <small>SEJONG UNIVERSITY</small>
-              </span>
-            </div>
+            <Link className="footer-brand-link" href={localizedPath(locale)}><SunsetMark lockup /></Link>
             <p>{dictionary.footer.archive}</p>
             <p className="mono footer-meta">{ORG_FULL_NAME}</p>
           </div>
-          <div className="footer-col">
-            <h4 className="mono">Navigate</h4>
+          <nav className="footer-col footer-navigation" aria-labelledby="footer-navigation-heading">
+            <h2 className="mono" id="footer-navigation-heading">{locale === "ko" ? "둘러보기" : "Navigate"}</h2>
             <ul>
               {(
                 [
@@ -54,17 +49,17 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
           <div className="footer-col">
-            <h4 className="mono">Contact</h4>
+            <h2 className="mono">{locale === "ko" ? "연락처" : "Contact"}</h2>
             <ul>
               <li>
                 <a href={GITHUB_ORG_URL} target="_blank" rel="noopener noreferrer">
-                  {dictionary.footer.github}
+                  <Github size={16} aria-hidden />{dictionary.footer.github}<ArrowUpRight size={13} aria-hidden />
                 </a>
               </li>
               <li>
-                <a href={`mailto:${ORG_CONTACT.email}`}>{ORG_CONTACT.email}</a>
+                <a href={`mailto:${ORG_CONTACT.email}`}><Mail size={16} aria-hidden />{ORG_CONTACT.email}</a>
               </li>
             </ul>
           </div>

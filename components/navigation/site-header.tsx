@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 
-import { SunsetChipMark } from "@/components/brand/SunsetChipMark";
+import { SunsetMark } from "@/components/brand/sunset-mark";
 import { ProbePalette } from "@/components/navigation/probe-palette";
 import { ThemeToggle } from "@/components/navigation/theme-toggle";
 import { GITHUB_ORG_URL } from "@/lib/content/site";
@@ -39,35 +40,59 @@ function SiteHeaderFrame({ locale, dictionary, pathname }: SiteHeaderFrameProps)
   const [menuOpen, setMenuOpen] = useState(false);
   const [communityOpen, setCommunityOpen] = useState(false);
   const communityToggle = useRef<HTMLButtonElement>(null);
+  const mobileToggle = useRef<HTMLButtonElement>(null);
+  const navigation = useRef<HTMLElement>(null);
+  const communityMenu = useRef<HTMLLIElement>(null);
+  const communityActive = ["people", ...communityLinks.map(({ path }) => path)]
+    .some((path) => isActivePath(pathname, localizedPath(locale, path)));
+
+  useEffect(() => {
+    if (menuOpen) navigation.current?.querySelector("a")?.focus({ preventScroll: true });
+  }, [menuOpen]);
 
   useEffect(() => {
     if (!menuOpen && !communityOpen) return;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        if (communityOpen) communityToggle.current?.focus();
-        setMenuOpen(false);
-        setCommunityOpen(false);
+        if (communityOpen) {
+          communityToggle.current?.focus();
+          setCommunityOpen(false);
+        } else {
+          mobileToggle.current?.focus();
+          setMenuOpen(false);
+        }
       }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [menuOpen, communityOpen]);
 
+  useEffect(() => {
+    if (!communityOpen) return;
+    const dismissOutside = (event: PointerEvent) => {
+      if (event.target instanceof Node && !communityMenu.current?.contains(event.target)) setCommunityOpen(false);
+    };
+    document.addEventListener("pointerdown", dismissOutside);
+    return () => document.removeEventListener("pointerdown", dismissOutside);
+  }, [communityOpen]);
+
   return (
     <header className="site-header">
       <div className="wrap site-header-inner">
         <Link href={localizedPath(locale)} className="brand">
-          <SunsetChipMark />
+          <SunsetMark />
           <span>
             {dictionary.site.name}
-            <small>SEJONG UNIVERSITY</small>
+            <small>{locale === "ko" ? "세종" : "SEJONG"}</small>
           </span>
         </Link>
 
         <div className="site-header-cluster">
           <nav
+            ref={navigation}
             className={`main-nav${menuOpen ? " is-open" : ""}`}
-            aria-label="Primary"
+            aria-label={locale === "ko" ? "주 메뉴" : "Primary"}
+            id="site-navigation"
           >
             <ul>
               {navItems.map(([segment, key]) => {
@@ -87,6 +112,7 @@ function SiteHeaderFrame({ locale, dictionary, pathname }: SiteHeaderFrameProps)
                     <Link
                       href={href}
                       className={active ? "is-active" : undefined}
+                      aria-current={pathname === href || pathname === `${href}/` ? "page" : undefined}
                       onClick={() => setMenuOpen(false)}
                     >
                       {label}
@@ -94,13 +120,26 @@ function SiteHeaderFrame({ locale, dictionary, pathname }: SiteHeaderFrameProps)
                   </li>
                 );
               })}
-              <li className="community-menu-item">
-                <button ref={communityToggle} type="button" className="community-menu-toggle" aria-expanded={communityOpen} aria-controls="community-menu" onClick={() => setCommunityOpen((value) => !value)}>
-                  {communityCopy.community[locale]} <span aria-hidden>⌄</span>
+              <li className="community-menu-item" ref={communityMenu} onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) setCommunityOpen(false);
+              }}>
+                <button ref={communityToggle} type="button" className={`community-menu-toggle${communityActive ? " is-active" : ""}`} aria-expanded={communityOpen} aria-controls="community-menu" onClick={() => setCommunityOpen((value) => !value)}>
+                  {communityCopy.community[locale]} <ChevronDown size={15} aria-hidden />
                 </button>
                 <div id="community-menu" className="community-menu" hidden={!communityOpen}>
-                  <Link className="community-people-link" href={localizedPath(locale, "people")} onClick={() => setMenuOpen(false)}>{dictionary.nav.people}</Link>
-                  {communityLinks.map((link) => <Link key={link.path} href={localizedPath(locale, link.path)} onClick={() => setMenuOpen(false)}>{link.label[locale]}</Link>)}
+                  {[{ path: "people", label: dictionary.nav.people }, ...communityLinks.map(({ path, label }) => ({ path, label: label[locale] }))].map(({ path, label }) => {
+                    const href = localizedPath(locale, path);
+                    return <Link
+                      key={path}
+                      className={path === "people" ? "community-people-link" : undefined}
+                      href={href}
+                      aria-current={pathname === href ? "page" : undefined}
+                      onClick={() => {
+                        setCommunityOpen(false);
+                        setMenuOpen(false);
+                      }}
+                    >{label}</Link>;
+                  })}
                 </div>
               </li>
               <li className="mobile-only">
@@ -120,10 +159,8 @@ function SiteHeaderFrame({ locale, dictionary, pathname }: SiteHeaderFrameProps)
               target="_blank"
               rel="noopener noreferrer"
             >
-              View on GitHub
-              <span className="arrow" aria-hidden>
-                →
-              </span>
+              {locale === "ko" ? "GitHub에서 보기" : "View on GitHub"}
+              <ArrowUpRight size={15} aria-hidden />
             </a>
             <Link
               href={alternateHref}
@@ -146,15 +183,15 @@ function SiteHeaderFrame({ locale, dictionary, pathname }: SiteHeaderFrameProps)
               }}
             />
             <button
+              ref={mobileToggle}
               type="button"
               className="shell-control shell-control--icon nav-toggle"
               aria-label={menuOpen ? dictionary.nav.closeMenu : dictionary.nav.openMenu}
               aria-expanded={menuOpen}
+              aria-controls="site-navigation"
               onClick={() => setMenuOpen((value) => !value)}
             >
-              <span />
-              <span />
-              <span />
+              {menuOpen ? <X size={19} aria-hidden /> : <Menu size={19} aria-hidden />}
             </button>
           </div>
         </div>
