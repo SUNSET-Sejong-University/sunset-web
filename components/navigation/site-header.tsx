@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 
-import { SunsetMark } from "@/components/brand/sunset-mark";
+import { SunsetMark, SunsetWordmark } from "@/components/brand/sunset-mark";
 import { ProbePalette } from "@/components/navigation/probe-palette";
 import { ThemeToggle } from "@/components/navigation/theme-toggle";
 import { GITHUB_ORG_URL } from "@/lib/content/site";
@@ -79,12 +79,9 @@ function SiteHeaderFrame({ locale, dictionary, pathname }: SiteHeaderFrameProps)
   return (
     <header className="site-header">
       <div className="wrap site-header-inner">
-        <Link href={localizedPath(locale)} className="brand">
+        <Link href={localizedPath(locale)} className="brand" aria-label={`${dictionary.site.name} ${locale === "ko" ? "세종" : "SEJONG"}`}>
           <SunsetMark />
-          <span>
-            {dictionary.site.name}
-            <small>{locale === "ko" ? "세종" : "SEJONG"}</small>
-          </span>
+          <SunsetWordmark />
         </Link>
 
         <div className="site-header-cluster">
