@@ -3,8 +3,7 @@ import { communityCopy } from "@/lib/content/community";
 
 import { getContributorInitials } from "@/lib/content/about-people";
 import { getGroupMembers, orgGroups } from "@/lib/content/org-structure";
-import { getProjectBySlug } from "@/lib/content/projects";
-import type { Contributor } from "@/lib/content/types";
+import type { Contributor, LocalizedStrings } from "@/lib/content/types";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/locales";
 import { localizedPath } from "@/lib/utils/paths";
@@ -12,7 +11,6 @@ import { localizedPath } from "@/lib/utils/paths";
 type PeopleSectionsProps = {
   locale: Locale;
   dictionary: Dictionary;
-  people: readonly Contributor[];
 };
 
 type PersonCardProps = {
@@ -20,9 +18,10 @@ type PersonCardProps = {
   person: Contributor;
   /** Heading level for the person's name; depends on the surrounding section. */
   headingLevel: "h3" | "h4";
+  role: LocalizedStrings | undefined;
 };
 
-function PersonCard({ locale, person, headingLevel: Heading }: PersonCardProps) {
+function PersonCard({ locale, person, role, headingLevel: Heading }: PersonCardProps) {
   return (
     <article className="people-card-extended">
       <div className="people-card-head">
@@ -36,42 +35,27 @@ function PersonCard({ locale, person, headingLevel: Heading }: PersonCardProps) 
             <Heading>{person.displayName}</Heading>
           )}
           {person.founder ? <span className="founder-label">{communityCopy.founder[locale]}</span> : null}
-          {person.role ? <span className="role">{person.role[locale]}</span> : null}
+          {role ? <span className="role">{role[locale]}</span> : null}
         </div>
       </div>
-      {person.projectSlugs.length > 0 || person.linkedinUrl ? (
+      {person.linkedinUrl ? (
         <div className="people-card-projects">
-          {person.linkedinUrl ? (
-            <a
-              href={person.linkedinUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="people-chip"
-              aria-label={`${person.displayName} — LinkedIn`}
-            >
-              LinkedIn ↗
-            </a>
-          ) : null}
-          {person.projectSlugs.map((slug) => {
-            const project = getProjectBySlug(slug);
-            if (!project) return null;
-            return (
-              <Link
-                key={slug}
-                href={localizedPath(locale, `projects/${slug}`)}
-                className="people-chip"
-              >
-                {project.name}
-              </Link>
-            );
-          })}
+          <a
+            href={person.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="people-chip"
+            aria-label={`${person.displayName} — LinkedIn`}
+          >
+            LinkedIn ↗
+          </a>
         </div>
       ) : null}
     </article>
   );
 }
 
-export function PeopleSections({ locale, dictionary, people }: PeopleSectionsProps) {
+export function PeopleSections({ locale, dictionary }: PeopleSectionsProps) {
   const page = dictionary.peoplePage;
   const structurePath = localizedPath(locale, "people/structure");
 
@@ -136,8 +120,8 @@ export function PeopleSections({ locale, dictionary, people }: PeopleSectionsPro
               {members.length > 0 ? (
                 <ul className="people-grid-extended">
                   {members.map((person) => (
-                    <li key={person.id}>
-                      <PersonCard locale={locale} person={person} headingLevel="h4" />
+                    <li key={person.id} id={orgGroups.find((entry) => entry.memberIds.includes(person.id))?.id === group.id ? `person-${person.id}` : undefined}>
+                      <PersonCard locale={locale} person={person} role={group.memberRoles?.[person.id] ?? (group.id === "founding-members" ? person.role : undefined)} headingLevel="h4" />
                     </li>
                   ))}
                 </ul>
@@ -157,19 +141,6 @@ export function PeopleSections({ locale, dictionary, people }: PeopleSectionsPro
             {page.structureLinkLabel} →
           </Link>
         </div>
-
-        <div className="people-section-head reveal">
-          <h2>{page.contributorsTitle}</h2>
-          <p>{page.contributorsIntro}</p>
-        </div>
-
-        <ul className="people-grid-extended reveal">
-          {people.map((person) => (
-            <li key={person.id} id={`person-${person.id}`}>
-              <PersonCard locale={locale} person={person} headingLevel="h3" />
-            </li>
-          ))}
-        </ul>
 
         <div className="people-footer-link">
           <p className="mono people-footer-label">{page.projectsLabel}</p>

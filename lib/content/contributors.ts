@@ -4,6 +4,7 @@ export const contributors: readonly Contributor[] = [
   {
     id: "prithwis-das",
     displayName: "Prithwis Das",
+    linkedinUrl: "https://www.linkedin.com/in/prithwis-das/",
     githubUsername: "Prithwis-2023",
     githubUrl: "https://github.com/Prithwis-2023",
     founder: true,
@@ -24,6 +25,7 @@ export const contributors: readonly Contributor[] = [
   },
   {
     id: "odina-yusupova",
+    linkedinUrl: "https://www.linkedin.com/in/odinabonu-yusupova-809534316",
     displayName: "Odina Yusupova",
     githubUsername: "",
     githubUrl: "",
@@ -49,10 +51,11 @@ export const contributors: readonly Contributor[] = [
   },
   {
     id: "choi-hyong-chan",
+    founder: true,
+    linkedinUrl: "https://www.linkedin.com/in/%ED%98%95%EC%B0%AC-%EC%B5%9C-a5267b3a1/",
     displayName: "Choi Hyong Chan",
     githubUsername: "strughyhchan",
     githubUrl: "https://github.com/strughyhchan",
-    role: { en: "NaeonAir · MoodFlix", ko: "NaeonAir · MoodFlix" },
     projectSlugs: ["naeonair-wisdrone", "moodflix"],
   },
   {
@@ -65,6 +68,7 @@ export const contributors: readonly Contributor[] = [
   },
   {
     id: "myint-myat-aung",
+    linkedinUrl: "https://www.linkedin.com/in/myint-myat-aung-457141255/",
     displayName: "Myint Myat Aung",
     githubUsername: "",
     githubUrl: "",
@@ -74,6 +78,7 @@ export const contributors: readonly Contributor[] = [
   {
     id: "arif-anzum",
     displayName: "Arif Anzum",
+    linkedinUrl: "https://www.linkedin.com/in/arifanzum/",
     githubUsername: "",
     githubUrl: "",
     projectSlugs: [],

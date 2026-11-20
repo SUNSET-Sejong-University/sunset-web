@@ -13,7 +13,8 @@ import type { Contributor, LocalizedStrings } from "@/lib/content/types";
  *   separate from functional role.
  * - Section Leads lead projects in their respective groups: stated by the
  *   project owner. Owner-confirmed (2026-10-16): Azizbek Arzikulov leads
- *   Full-Stack Development / Engineering; Odina Yusupova leads Business.
+ *   Full-Stack Development / Engineering. Owner-confirmed (2026-11-20):
+ *   Arif Anzum and Odina Yusupova lead Creative Arts.
  *   Other sections have no confirmed lead yet.
  * - Advisory Committee and Mentors: group names are owner-provided;
  *   no members or relationships have been confirmed yet.
@@ -33,6 +34,7 @@ export type OrgGroup = {
   purpose: LocalizedStrings;
   /** Contributor ids from `contributors.ts`. Empty until verified. */
   memberIds: readonly string[];
+  memberRoles?: Readonly<Record<string, LocalizedStrings>>;
 };
 
 export type OrgRelationship = {
@@ -42,7 +44,7 @@ export type OrgRelationship = {
   statement: LocalizedStrings;
 };
 
-export const orgGroups = [
+export const orgGroups: readonly OrgGroup[] = [
   {
     id: "founding-members",
     title: { en: "Founding Members", ko: "창립 멤버" },
@@ -50,7 +52,7 @@ export const orgGroups = [
       en: "Contributors confirmed as founding contributors of the SUNSET organization.",
       ko: "SUNSET 조직의 창립 기여자로 확인된 구성원입니다.",
     },
-    memberIds: ["prithwis-das", "choe-jong-u", "odina-yusupova", "azizbek-arzikulov"],
+    memberIds: ["prithwis-das", "choe-jong-u", "odina-yusupova", "azizbek-arzikulov", "choi-hyong-chan"],
   },
   {
     id: "section-leads",
@@ -59,7 +61,12 @@ export const orgGroups = [
       en: "Lead projects in their respective groups.",
       ko: "각자의 그룹에서 프로젝트를 이끕니다.",
     },
-    memberIds: ["azizbek-arzikulov", "odina-yusupova"],
+    memberIds: ["azizbek-arzikulov", "odina-yusupova", "arif-anzum"],
+    memberRoles: {
+      "azizbek-arzikulov": { en: "Full Stack Web Development / Engineering", ko: "풀스택 웹 개발 / 엔지니어링" },
+      "odina-yusupova": { en: "Creative Arts", ko: "크리에이티브 아트" },
+      "arif-anzum": { en: "Creative Arts", ko: "크리에이티브 아트" },
+    },
   },
   {
     id: "staff",
@@ -68,7 +75,12 @@ export const orgGroups = [
       en: "Members who help with SUNSET’s operations.",
       ko: "SUNSET 운영을 돕는 구성원입니다.",
     },
-    memberIds: ["arif-anzum"],
+    memberIds: ["azizbek-arzikulov", "odina-yusupova", "myint-myat-aung"],
+    memberRoles: {
+      "azizbek-arzikulov": { en: "Head of Security", ko: "보안 책임자" },
+      "odina-yusupova": { en: "Business & Marketing", ko: "비즈니스 및 마케팅" },
+      "myint-myat-aung": { en: "Technical Assets Manager", ko: "기술 자산 관리자" },
+    },
   },
   {
     id: "advisory-committee",

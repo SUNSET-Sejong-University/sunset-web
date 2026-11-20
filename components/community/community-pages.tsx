@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { ReactNode } from "react";
 import { SectionPathwayMap } from "@/components/community/section-pathway-map";
 import { DisciplineGlyph } from "@/components/community/discipline-glyph";
@@ -12,6 +11,7 @@ import { visualCopy } from "@/lib/content/community-visuals";
 import { achievements, achievementCopy, achievementMember } from "@/lib/content/achievements";
 import { buildSections, communityCopy } from "@/lib/content/community";
 import { contributors } from "@/lib/content/contributors";
+import { orgGroups } from "@/lib/content/org-structure";
 import { organizations, partnerCopy, relationshipLabels, type Organization } from "@/lib/content/partners";
 import type { Locale } from "@/lib/i18n/locales";
 import { localizedPath } from "@/lib/utils/paths";
@@ -35,7 +35,7 @@ export function SectionsPageContent({ locale }: { locale: Locale }) {
           <div className="pathway-discipline"><span className="mono pathway-number" aria-hidden>0{index + 1}</span><DisciplineGlyph slug={section.slug} /></div>
           <div><p className="mono pathway-focus">{section.focus[locale]}</p><h2>{section.title[locale]}</h2></div>
           <div><p>{section.description[locale]}</p>
-            {member ? <p className="section-association">{communityCopy.associatedMember[locale]} · <Link href={`${localizedPath(locale, "people")}#person-${member.id}`}>{member.displayName}</Link></p> : null}
+            {member ? <p className="section-association">{communityCopy.associatedMember[locale]} · {orgGroups.some((group) => group.memberIds.includes(member.id)) ? <Link href={`${localizedPath(locale, "people")}#person-${member.id}`}>{member.displayName}</Link> : member.displayName}</p> : null}
             <Link className="text-link" href={localizedPath(locale, "join")}>{communityCopy.join[locale]} →</Link>
           </div>
         </section>;
@@ -95,15 +95,13 @@ export function AchievementsPageContent({ locale }: { locale: Locale }) {
           </header>
           <section className="achievement-project"><h3>{achievement.project}</h3>
             <Link className="achievement-person" href={`${localizedPath(locale, "people")}#person-${member.id}`}>{member.displayName} →</Link>
+            {achievement.additionalCredits?.map((credit) => {
+              const person = credit.kind === "member" ? achievementMember(credit.memberId) : undefined;
+              return person ? <Link className="achievement-person" key={person.id} href={`${localizedPath(locale, "people")}#person-${person.id}`}>{person.displayName} →</Link> : credit.kind === "name" ? <span className="achievement-person" key={credit.name}>{credit.name}</span> : null;
+            })}
             <p>{achievement.description[locale]}</p>
             <a className="text-link" href={achievement.projectUrl} target="_blank" rel="noopener noreferrer">{achievementCopy.project[locale]} ↗</a>
           </section>
-          <div className="achievement-media" role="group" aria-label={achievementCopy.photos[locale]}>
-            {achievement.media.map((image) => <figure key={image.src}>
-              <a href={image.src}><Image src={image.src} width={image.width} height={image.height} alt={image.alt[locale]} sizes={achievement.media.length > 1 ? "(max-width: 640px) 92vw, (max-width: 1024px) 48vw, 380px" : "(max-width: 768px) 92vw, 800px"} /></a>
-              <figcaption className="mono">{image.credit[locale]}</figcaption>
-            </figure>)}
-          </div>
           {achievement.id === "gitguardian-seoul-bowl-2025" ? <GitguardianPipeline locale={locale} /> : null}
           <section className="achievement-evidence"><h3>{achievementCopy.evidence[locale]}</h3><ul className="evidence-links">{achievement.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label[locale]} ↗</a></li>)}</ul></section>
           </div>

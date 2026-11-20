@@ -286,6 +286,8 @@ test.describe("footer shell", () => {
 
     const width = await footer.evaluate((node) => node.scrollWidth);
     expect(width).toBeLessThanOrEqual(1440);
+    const directoryColumns = await footer.locator(".footer-navigation ul").evaluate((node) => getComputedStyle(node).gridTemplateColumns);
+    expect(directoryColumns.split(" ")).toHaveLength(2);
   });
 
   test("footer stacks on mobile", async ({ page }) => {

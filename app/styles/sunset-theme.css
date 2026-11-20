@@ -3672,12 +3672,6 @@ html.reveal-ready.reveal-reduced .reveal {
 .achievement-record { grid-template-columns: minmax(0, .28fr) minmax(0, 1fr); scroll-margin-top: 95px; }
 .achievement-record + .achievement-record { margin-top: clamp(72px, 10vw, 144px); }
 .achievement-project { margin-bottom: 24px; }
-.achievement-media { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px; align-items: start; }
-.achievement-media figure { min-width: 0; margin: 0; }
-.achievement-media a { display: block; overflow: hidden; background: var(--mask); border: 1px solid var(--via-bright); transition: border-color .2s var(--ease); }
-.achievement-media a:is(:hover, :focus-visible) { border-color: var(--copper); }
-.achievement-media img { display: block; width: 100%; height: auto; }
-.achievement-media figcaption { margin-top: 10px; font-size: 11px; color: var(--solder-faint); }
 .achievement-evidence { margin-top: 32px; }
 
 .home-achievement { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
@@ -3717,6 +3711,17 @@ html.reveal-ready.reveal-reduced .reveal {
   .probe-foot { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .brand-mark, .community-menu-toggle svg, .achievement-media a, .nav-cta svg { transition: none; }
+  .brand-mark, .community-menu-toggle svg, .nav-cta svg { transition: none; }
   .brand:is(:hover, :focus-visible) .brand-mark, .nav-cta:hover svg { transform: none; }
 }
+
+/* Keep the footer directory compact while retaining the existing mobile layout. */
+@media (min-width: 641px) and (max-width: 980px) {
+  .footer-navigation ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; }
+}
+@media (min-width: 981px) {
+  .footer-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, .8fr); gap: 40px; margin-bottom: 32px; }
+  .footer-navigation ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 24px; }
+  .site-footer .footer-navigation a { min-height: 36px; }
+}
+.achievement-project > .achievement-person { margin-right: 20px; }

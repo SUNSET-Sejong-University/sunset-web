@@ -193,14 +193,14 @@ test.describe("people groups and organization structure", () => {
     await expect(founding.getByRole("heading", { level: 4, name: "Prithwis Das" })).toBeVisible();
 
     await expect(founding.getByRole("heading", { level: 4, name: "Azizbek Arzikulov" })).toBeVisible();
-    await expect(page.locator("#staff")).toContainText("Arif Anzum");
+    await expect(page.locator("#staff")).toContainText("Myint Myat Aung");
 
     const leads = page.locator("#section-leads");
-    await expect(leads.getByRole("article")).toHaveCount(2);
+    await expect(leads.getByRole("article")).toHaveCount(3);
     await expect(leads.getByRole("heading", { level: 4, name: "Azizbek Arzikulov" })).toBeVisible();
     await expect(leads).toContainText("Full Stack Web Development / Engineering");
     await expect(leads.getByRole("heading", { level: 4, name: "Odina Yusupova" })).toBeVisible();
-    await expect(leads).toContainText("Business");
+    await expect(leads).toContainText("Creative Arts");
     await expect(leads.getByRole("link", { name: /Azizbek Arzikulov — LinkedIn/ })).toHaveAttribute(
       "href",
       "https://www.linkedin.com/in/azizbek-arzikulov",

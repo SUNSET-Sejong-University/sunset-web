@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 
 import { PeopleSections } from "@/components/people/people-sections";
-import { getSortedContributors } from "@/lib/content/contributors";
 import { createSiteMetadata } from "@/lib/metadata/site";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { isLocale, type Locale } from "@/lib/i18n/locales";
@@ -32,7 +31,6 @@ export default async function PeoplePage({ params }: PeoplePageProps) {
 
   const locale = lang as Locale;
   const dictionary = getDictionary(locale);
-  const people = getSortedContributors();
 
-  return <PeopleSections locale={locale} dictionary={dictionary} people={people} />;
+  return <PeopleSections locale={locale} dictionary={dictionary} />;
 }

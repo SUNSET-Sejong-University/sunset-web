@@ -491,10 +491,10 @@ const dictionaries: Record<Locale, Dictionary> = {
     peoplePage: {
       title: "People",
       description:
-        "Contributors attached to SUNSET repositories — names from commit history and verified project associations, not job titles.",
+        "Meet SUNSET’s founders, section leads, and staff.",
       heroEyebrow: "BUILDER NETWORK",
       incompleteNote:
-        "Contributor records are incomplete. Roles are listed as Contributor unless directly verified. SUNSET does not rank contributors by commit volume.",
+        "Roles and profile links are published where confirmed.",
       contributorLabel: "Contributor",
       projectsLabel: "Browse the full project archive for case studies and repositories.",
       groupsNavLabel: "People groups",
@@ -882,10 +882,10 @@ const dictionaries: Record<Locale, Dictionary> = {
     peoplePage: {
       title: "사람들",
       description:
-        "SUNSET 저장소에 연결된 기여자 — 커밋 기록과 검증된 프로젝트 연관, 직함이 아닌 빌더 네트워크.",
+        "SUNSET의 창립 멤버, 섹션 리드, 운영진을 소개합니다.",
       heroEyebrow: "BUILDER NETWORK",
       incompleteNote:
-        "기여자 기록은 불완전합니다. 역할이 직접 확인되지 않으면 Contributor로 표시합니다. SUNSET은 커밋 수로 기여자 순위를 매기지 않습니다.",
+        "확인된 역할과 프로필 링크를 공개합니다.",
       contributorLabel: "기여자",
       projectsLabel: "사례 연구와 저장소는 프로젝트 아카이브에서 확인하세요.",
       groupsNavLabel: "사람 그룹",

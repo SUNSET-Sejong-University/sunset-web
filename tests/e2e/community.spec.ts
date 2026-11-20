@@ -64,13 +64,39 @@ for (const locale of ["en", "ko"] as const) {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto(`/${locale}/people`);
     const founding = page.locator("#founding-members");
-    await expect(founding.getByRole("article")).toHaveCount(4);
-    for (const name of ["Prithwis Das", "최종우", "Odina Yusupova", "Azizbek Arzikulov"]) {
+    await expect(founding.getByRole("article")).toHaveCount(5);
+    for (const name of ["Prithwis Das", "최종우", "Odina Yusupova", "Azizbek Arzikulov", "Choi Hyong Chan"]) {
       const card = founding.getByRole("article").filter({ has: page.getByRole("heading", { name, exact: true }) });
       await expect(card.locator(".founder-label")).toHaveText(locale === "en" ? "Founder" : "창립자");
       if (name === "최종우") await expect(card.locator(".role")).toContainText("HR");
       if (name === "Odina Yusupova") await expect(card.locator(".role")).toHaveText(locale === "en" ? "Business & Marketing" : "비즈니스 및 마케팅");
       if (name === "Prithwis Das") await expect(card.locator(".role")).toHaveCount(0);
+    }
+    const leads = page.locator("#section-leads");
+    const staff = page.locator("#staff");
+    await expect(leads.getByRole("article")).toHaveCount(3);
+    for (const name of ["Odina Yusupova", "Arif Anzum"]) {
+      const card = leads.getByRole("article").filter({ has: page.getByRole("heading", { name, exact: true }) });
+      await expect(card.locator(".role")).toHaveText(locale === "en" ? "Creative Arts" : "크리에이티브 아트");
+    }
+    await expect(staff.getByRole("article")).toHaveCount(3);
+    for (const [name, role] of [
+      ["Azizbek Arzikulov", locale === "en" ? "Head of Security" : "보안 책임자"],
+      ["Odina Yusupova", locale === "en" ? "Business & Marketing" : "비즈니스 및 마케팅"],
+      ["Myint Myat Aung", locale === "en" ? "Technical Assets Manager" : "기술 자산 관리자"],
+    ] as const) {
+      await expect(staff.getByRole("article").filter({ has: page.getByRole("heading", { name, exact: true }) }).locator(".role")).toHaveText(role);
+    }
+    await expect(staff).not.toContainText("Arif Anzum");
+    await expect(page.getByRole("heading", { name: locale === "en" ? "Contributors" : "기여자", exact: true })).toHaveCount(0);
+    await expect(page.locator(".people-card-projects a[href*='/projects/']")).toHaveCount(0);
+    for (const [id, url] of [
+      ["prithwis-das", "https://www.linkedin.com/in/prithwis-das/"],
+      ["choi-hyong-chan", "https://www.linkedin.com/in/%ED%98%95%EC%B0%AC-%EC%B5%9C-a5267b3a1/"],
+      ["odina-yusupova", "https://www.linkedin.com/in/odinabonu-yusupova-809534316"],
+      ["myint-myat-aung", "https://www.linkedin.com/in/myint-myat-aung-457141255/"],
+    ] as const) {
+      await expect(page.locator(`#person-${id} a[aria-label$="— LinkedIn"]`)).toHaveAttribute("href", url);
     }
     await expect(page.getByRole("heading", { name: locale === "en" ? "Mentors" : "멘토", exact: true })).toBeVisible();
     await expect(page.locator("main")).not.toContainText(/Industry Mentors|업계 멘토/);
@@ -99,9 +125,11 @@ for (const locale of ["en", "ko"] as const) {
   test(`${locale} achievement credits the existing member and canonical repository`, async ({ page }) => {
     await page.goto(`/${locale}/achievements`);
     const scoop = page.locator("#gitguardian-seoul-bowl-2025");
-    await expect(scoop.getByRole("img")).toBeVisible();
+    await expect(page.locator("main img")).toHaveCount(0);
     await expect(page.locator("#latchops-daytona .achievement-award")).toHaveText(locale === "en" ? "First Place" : "1위");
-    await expect(page.locator("#buildin-github-love-of-code").getByRole("img")).toHaveCount(2);
+    await expect(page.locator("#buildin-github-love-of-code .achievement-project")).toContainText("Ryan");
+    await expect(page.locator("#buildin-github-love-of-code .achievement-project")).toContainText("Prithwis Das");
+    await expect(page.locator("#tolkyn-arduino-feature .achievement-project")).toContainText("Myint Myat Aung");
     await expect(page.locator("#tolkyn-arduino-feature .achievement-award")).toHaveText(locale === "en" ? "Featured by Arduino" : "Arduino 공식 소개");
     await expect(scoop.locator(".achievement-award")).toContainText("Track Winner");
     await expect(scoop.locator(".achievement-award")).not.toContainText(/grand prize|first place|champion/i);
