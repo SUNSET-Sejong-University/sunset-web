@@ -907,3 +907,7 @@ Azizbek Arzikulov matches existing `azizbek-arzikulov` / `azizbekdevuz`. Profile
 - [Daytona HackSprint Seoul](https://luma.com/daytonaseoul) supplies event context and date. The supplied event photo shows “1st Place LatchOps.” [LatchOps repository](https://github.com/azizbekdevuz/LatchOps) supplies project context.
 - [The GitHub Blog](https://github.blog/open-source/from-karaoke-terminals-to-ai-resumes-the-winners-of-githubs-for-the-love-of-code-challenge/) lists BuildIn in its hardware winners and publishes four prototype photos. [GitHub Community](https://github.com/orgs/community/discussions/166366) corroborates Prithwis’s win. The supplied screenshot is supplemental.
 - [Arduino on X](https://x.com/arduino/status/2006397902675980329) links to [Prithwis’s Tolkyn build guide](https://www.instructables.com/Tolkyn-Turning-Invisible-Rhythm-Into-Living-Archit/). This is a feature. Its date is reported in Korea Standard Time.
+
+## Owner-confirmed assignments — 2026-11-20
+
+Choi Hyong Chan is a founder. Arif Anzum and Odina Yusupova lead Creative Arts. Staff includes Azizbek Arzikulov as Head of Security, Odina Yusupova for Business & Marketing, and Myint Myat Aung as Technical Assets Manager. The owner identifies Jaden as Myint Myat Aung and credits him alongside Prithwis for Tolkyn. The owner credits Ryan alongside Prithwis for BuildIn. Ryan has no matched person record, so his credit uses the supplied name without an invented profile. Four supplied LinkedIn URLs are recorded in contributors.ts.

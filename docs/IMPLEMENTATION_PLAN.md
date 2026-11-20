@@ -593,3 +593,7 @@ Exit criteria: requested content and navigation verified; no fabricated form, ro
 Use docs/COMMUNITY_VISUAL_PLAN.md for the completed asset-first plan. Preserve the current working version; no Git discard/staging/publishing operations. Local SVG/React assets explain interest pathways, company domains and the verified GitGuardian graph. Integrate only homepage surface continuity, Join official iframe, manual partner showcase/profile visual composition, and scanability of existing public pages. No fifth task.
 
 Exit checks: all standard commands actually run; both locales/themes at 1440/1024/768/390/320 inspected; no autoplay, real manual selection/keyboard/touch/reduced-motion support, static directory works without JS, real Google iframe verified without submission, fallback usable when blocked, cross-origin limitations and baseline failures recorded separately.
+
+## People and achievement refinement — 2026-11-20
+
+Update owner-confirmed founder, section lead and Staff assignments using the existing person records. Support group-specific roles, remove the contributor grid and project tags, add supplied LinkedIn URLs, remove archive photos, and add the requested achievement credits. Compact the desktop footer through a two-column directory. Verify localized content, anchors, keyboard access, responsive layouts and the standard project scripts.

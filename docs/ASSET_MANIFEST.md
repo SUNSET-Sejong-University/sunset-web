@@ -29,3 +29,11 @@ Initial manifest created during Phase 0. Assets are local copies or original SVG
 - `public/images/achievements/seoul-bowl.webp` and `latchops-daytona.webp`: supplied event photography, used in Achievements. Seoul Bowl photo also appears on the homepage.
 - `public/images/achievements/buildin-project.webp`: [GitHub Blog’s BuildIn photos](https://github.blog/wp-content/uploads/2025/10/buildin.png). `buildin-honors.webp` is cropped from the supplied profile screenshot.
 - `public/images/achievements/tolkyn-project.webp`: [Prithwis Das’s build-guide cover](https://www.instructables.com/Tolkyn-Turning-Invisible-Rhythm-Into-Living-Archit/), linked by Arduino.
+
+## Achievement media display — 2026-11-20
+
+The owner requested a text-and-source achievement archive. Its photo gallery and BuildIn profile screenshot are removed from rendering. The Seoul Bowl image remains in the homepage teaser. Existing local source assets are retained.
+
+## Lossless logo exports — 2026-11-20
+
+The supplied original files are the export sources. The transparent SUNSET lockup is 660×573, the sun symbol 256×256, and the separate SUNSET/SEJONG wordmark 720×236. The combined Tuya/TuyaOpen mark is 2208×320. Lossless WebP and direct delivery preserve logo edges. The favicon includes 16, 32, 48, 64, 128 and 256px variants. Higher-density exports preserve the original artwork, colors and proportions.

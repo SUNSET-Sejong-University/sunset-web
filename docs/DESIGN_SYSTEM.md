@@ -327,3 +327,17 @@ Local React/SVG assets: discipline-glyph.tsx, section-pathway-map.tsx, company-c
 PartnerShowcase is a narrow manual client island: both selectors and status labels always visible, keyboard/previous-next/touch navigation, polite current-slide announcement; no autoplay. Selection uses a 16px/220ms transition; reduced motion is instantaneous. Initial render stays static. Complete server-rendered organization directory remains usable without JavaScript. Pipeline only animates the selected stage contact on an explicit action.
 
 Join has a first-class form frame and localized fallback, with 1850px desktop, 2100px tablet, 2400px mobile reserved height. Contribution notes remain in native details after the form. Parent markup must not access/style Google's iframe document. Existing shared security headers are retained: no child frame-src restriction is present.
+
+## Compact People and footer update — 2026-11-20
+
+People cards display group-specific functional roles and supplied LinkedIn links. The public contributor grid and project badges are removed. The achievement archive keeps the award hierarchy and evidence links while removing its photographs. The desktop footer directory spans two columns inside the existing three-part footer. Mobile retains its two-column directory and stacked footer groups.
+
+Tablet screenshot review found a single-column directory at 768px. Extended the compact two-column directory to 641–980px. Existing phone layout is retained.
+
+## Navbar wordmark — 2026-11-20
+
+Replaced the navbar’s live SUNSET lettering with a clipped view of the original transparent logo wordmark, beside the existing sun symbol. Keeps the exact supplied letter shapes and orange E. The raster resembles Typodermic’s Ethnocentric; the exact font cannot be certified without the original design file. Source comparison: https://typodermicfonts.com/ethnocentric/ . Accessible brand text and localized Sejong label remain. No additional font file is loaded. Verification pending.
+
+## Logo rendering quality — 2026-11-20
+
+The navbar wordmark renders its dedicated original-artwork crop. Header, footer and partner logo images use direct lossless exports sized for high-density screens. SUNSET’s theme-aware edge has zero Gaussian blur. The original sun shape renders with its native edge.
