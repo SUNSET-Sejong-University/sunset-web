@@ -345,3 +345,7 @@ The navbar wordmark renders its dedicated original-artwork crop. Header, footer 
 ## Logo outline weight — 2026-11-20
 
 SUNSET lettering uses its original weight in light mode. Dark mode uses a 0.15px zero-blur edge for visibility. The brand-edge-filter token follows both explicit theme choices and the system preference.
+
+## Homepage achievement archive — 2026-11-20
+
+The homepage features the newest verified achievement beside a compact chronological rail linking three earlier records. Dates, project names, events and award labels carry the visual hierarchy. Copper contacts and restrained borders reuse the PCB identity. The server-rendered links replace the event photo.

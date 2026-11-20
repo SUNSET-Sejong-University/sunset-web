@@ -8,6 +8,8 @@ type Achievement = {
   project: string;
   event: string;
   year: number;
+  /** ISO chronology key. Multi-day events use their final day. */
+  sortDate: string;
   date: LocalizedStrings;
   award: LocalizedStrings;
   projectUrl: string;
@@ -15,22 +17,9 @@ type Achievement = {
   sources: readonly { label: LocalizedStrings; url: string }[];
 };
 
-type AchievementImage = {
-  src: string;
-  width: number;
-  height: number;
-  alt: LocalizedStrings;
-  credit: LocalizedStrings;
-};
-
-export const achievementFeaturePhoto = {
-  src: "/images/achievements/seoul-bowl.webp", width: 1440, height: 960,
-  alt: { en: "The GitGuardian team holding its prize board at Seoul Bowl", ko: "Seoul Bowl에서 수상 보드를 들고 있는 GitGuardian 팀" },
-  credit: { en: "Seoul Bowl · Photo supplied by the team", ko: "Seoul Bowl · 팀 제공 사진" },
-} satisfies AchievementImage;
-
-export const achievements: readonly Achievement[] = [{
+const achievementRecords: readonly Achievement[] = [{
   id: "gitguardian-seoul-bowl-2025",
+  sortDate: "2025-12-21",
   memberId: "azizbek-arzikulov",
   project: "GitGuardian / GitGuard Agent",
   event: "Scoop AI Hackathon — Seoul Bowl",
@@ -47,6 +36,7 @@ export const achievements: readonly Achievement[] = [{
   ],
 }, {
   id: "latchops-daytona",
+  sortDate: "2026-09-19",
   memberId: "azizbek-arzikulov",
   project: "LatchOps",
   event: "Daytona HackSprint Seoul",
@@ -58,6 +48,7 @@ export const achievements: readonly Achievement[] = [{
   sources: [{ label: { en: "Event listing · Daytona HackSprint Seoul", ko: "행사 안내 · Daytona HackSprint Seoul" }, url: "https://luma.com/daytonaseoul" }],
 }, {
   id: "buildin-github-love-of-code",
+  sortDate: "2025-10-22",
   additionalCredits: [{ kind: "name", name: "Ryan" }],
   memberId: "prithwis-das",
   project: "BuildIn",
@@ -73,6 +64,7 @@ export const achievements: readonly Achievement[] = [{
   ],
 }, {
   id: "tolkyn-arduino-feature",
+  sortDate: "2026-01-01",
   additionalCredits: [{ kind: "member", memberId: "myint-myat-aung" }],
   memberId: "prithwis-das",
   project: "Tolkyn",
@@ -85,6 +77,10 @@ export const achievements: readonly Achievement[] = [{
   sources: [{ label: { en: "Project feature · Arduino on X", ko: "프로젝트 소개 · Arduino 공식 X" }, url: "https://x.com/arduino/status/2006397902675980329" }],
 }];
 
+export const achievements: readonly Achievement[] = [...achievementRecords].sort(
+  (left, right) => right.sortDate.localeCompare(left.sortDate),
+);
+
 export function achievementMember(memberId: string) {
   const person = contributors.find((entry) => entry.id === memberId);
   if (!person) throw new Error(`Unknown achievement member: ${memberId}`);
@@ -92,6 +88,7 @@ export function achievementMember(memberId: string) {
 }
 
 export const achievementCopy = {
+  archive: { en: "More from the archive", ko: "지난 성과 둘러보기" },
   member: { en: "Member achievement", ko: "구성원 성과" },
   project: { en: "Explore the project", ko: "프로젝트 살펴보기" },
   evidence: { en: "Sources & context", ko: "출처 및 맥락" },

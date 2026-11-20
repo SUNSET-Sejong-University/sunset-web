@@ -124,6 +124,12 @@ for (const locale of ["en", "ko"] as const) {
 
   test(`${locale} achievement credits the existing member and canonical repository`, async ({ page }) => {
     await page.goto(`/${locale}/achievements`);
+    expect(await page.locator(".achievement-record").evaluateAll((records) => records.map((record) => record.id))).toEqual([
+      "latchops-daytona",
+      "tolkyn-arduino-feature",
+      "gitguardian-seoul-bowl-2025",
+      "buildin-github-love-of-code",
+    ]);
     const scoop = page.locator("#gitguardian-seoul-bowl-2025");
     await expect(page.locator("main img")).toHaveCount(0);
     await expect(page.locator("#latchops-daytona .achievement-award")).toHaveText(locale === "en" ? "First Place" : "1위");
@@ -148,6 +154,17 @@ for (const locale of ["en", "ko"] as const) {
 
   test(`${locale} homepage, header, profiles, footer, and mobile PROBE link the archive`, async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto(`/${locale}`);
+    await expect(page.locator(".home-achievement h2")).toHaveText(locale === "en" ? "First Place" : "1위");
+    await expect(page.locator(".home-achievement")).toContainText("LatchOps");
+    await expect(page.locator(".home-achievement img")).toHaveCount(0);
+    const archiveLinks = page.locator(".home-achievement-archive a");
+    await expect(archiveLinks).toHaveCount(3);
+    await expect(archiveLinks.nth(0)).toHaveAttribute("href", `/${locale}/achievements#tolkyn-arduino-feature`);
+    await expect(archiveLinks.nth(1)).toHaveAttribute("href", `/${locale}/achievements#gitguardian-seoul-bowl-2025`);
+    await expect(archiveLinks.nth(2)).toHaveAttribute("href", `/${locale}/achievements#buildin-github-love-of-code`);
+    await archiveLinks.first().click();
+    await expect(page).toHaveURL(`/${locale}/achievements#tolkyn-arduino-feature`);
     await page.goto(`/${locale}`);
     await page.locator(`.home-partners a[href="/${locale}/partners"]`).click();
     await expect(page).toHaveURL(`/${locale}/partners`);

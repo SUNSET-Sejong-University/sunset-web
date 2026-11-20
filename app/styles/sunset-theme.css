@@ -3693,7 +3693,20 @@ html.reveal-ready.reveal-reduced .reveal {
 .achievement-evidence { margin-top: 32px; }
 
 .home-achievement { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
-.home-achievement img { display: block; width: 100%; height: auto; border: 1px solid var(--via-bright); }
+.home-achievement-date { display: block; font-size: 12px; color: var(--solder-faint); margin-bottom: 12px; }
+.home-achievement-archive { padding-left: 24px; border-left: 1px solid var(--copper-dim); }
+.home-achievement-archive h3 { font-size: 11px; font-weight: 400; color: var(--solder-faint); margin: 0 0 12px; }
+.home-achievement-archive ol { list-style: none; margin: 0; padding: 0; }
+.home-achievement-archive li { position: relative; border-top: 1px solid var(--via-bright); }
+.home-achievement-archive li::before { content: ""; position: absolute; left: -28px; top: 26px; width: 7px; height: 7px; border: 1px solid var(--copper); border-radius: 50%; background: var(--void); }
+.home-archive-link { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; }
+.home-archive-link > span { min-width: 0; }
+.home-archive-link time { display: block; font-size: 10px; color: var(--solder-faint); }
+.home-archive-title { display: block; margin: 5px 0 3px; font-family: var(--font-display); font-size: 18px; line-height: 1.4; color: var(--solder); }
+.home-archive-event { display: block; color: var(--solder-dim); font-size: 12px; line-height: 1.6; }
+.home-archive-award { display: block; color: var(--copper); font-size: 11px; line-height: 1.6; margin-top: 5px; }
+.home-archive-link svg { flex: none; color: var(--copper); }
+.home-archive-link:is(:hover, :focus-visible) .home-archive-title { color: var(--copper-bright); }
 .home-achievement .text-link { display: inline-block; margin-top: 16px; }
 .home-section-paths { gap: clamp(5px, 2vw, 20px); }
 

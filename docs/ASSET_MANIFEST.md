@@ -37,3 +37,7 @@ The owner requested a text-and-source achievement archive. Its photo gallery and
 ## Lossless logo exports — 2026-11-20
 
 The supplied original files are the export sources. The transparent SUNSET lockup is 660×573, the sun symbol 256×256, and the separate SUNSET/SEJONG wordmark 720×236. The combined Tuya/TuyaOpen mark is 2208×320. Lossless WebP and direct delivery preserve logo edges. The favicon includes 16, 32, 48, 64, 128 and 256px variants. Higher-density exports preserve the original artwork, colors and proportions.
+
+## Homepage achievement photo retirement — 2026-11-20
+
+The homepage achievement teaser now renders a native HTML/CSS archive rail. The Seoul Bowl photo is no longer rendered by the site. Historical local evidence files remain available in the repository.

@@ -763,3 +763,7 @@ The requested visual refinement reuses current routes/content. A manual partner 
 ## People display update — 2026-11-20
 
 The owner-confirmed organization groups are the People page’s published roster. The general contributor grid and project tags are removed from this page. Person records retain project associations for other callers. Functional roles can vary by group. LinkedIn links appear where supplied. The achievement archive displays award context, member credits and sources without photographs. Ryan is credited by the supplied first name; Jaden resolves to Myint Myat Aung. The desktop footer directory uses two columns.
+
+## Achievement ordering — 2026-11-20
+
+Achievements are exported newest first using ISO chronology keys derived from existing verified dates. Multi-day events use their final day for ordering. The homepage shares this ordering, features the newest record and links the next three entries in a compact archive summary.
