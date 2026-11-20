@@ -341,3 +341,7 @@ Replaced the navbar’s live SUNSET lettering with a clipped view of the origina
 ## Logo rendering quality — 2026-11-20
 
 The navbar wordmark renders its dedicated original-artwork crop. Header, footer and partner logo images use direct lossless exports sized for high-density screens. SUNSET’s theme-aware edge has zero Gaussian blur. The original sun shape renders with its native edge.
+
+## Logo outline weight — 2026-11-20
+
+SUNSET lettering uses its original weight in light mode. Dark mode uses a 0.15px zero-blur edge for visibility. The brand-edge-filter token follows both explicit theme choices and the system preference.
