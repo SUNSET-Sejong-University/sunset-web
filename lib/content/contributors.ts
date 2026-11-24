@@ -76,11 +76,11 @@ export const contributors: readonly Contributor[] = [
     projectSlugs: ["moodflix"],
   },
   {
-    id: "arif-anzum",
-    displayName: "Arif Anzum",
-    linkedinUrl: "https://www.linkedin.com/in/arifanzum/",
+    id: "kim-min-ung",
+    displayName: "Kim Min Ung",
     githubUsername: "",
     githubUrl: "",
+    role: { en: "Creative Arts", ko: "창작 예술" },
     projectSlugs: [],
   },
   {
