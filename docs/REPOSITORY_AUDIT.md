@@ -895,7 +895,7 @@ Record unresolved facts as unknown. Do not fill them with plausible guesses.
 
 ## Public content evidence update — 2026-11-10
 
-Owner confirms founders Prithwis Das, 최종우 (owner corrected the requested 최조우 typo), and Odina Yusupova. 최종우: HR; Odina: Business & Marketing. Prithwis has no recorded functional role. Existing person ids/project associations preserved. Owner associates Arif Anzum with Creative Arts; no current person record exists, so use name-only attribution without a new biography.
+Owner confirms founders Prithwis Das, 최종우 (owner corrected the requested 최조우 typo), and Odina Yusupova. 최종우: HR; Odina: Business & Marketing. Prithwis has no recorded functional role. Existing person ids/project associations preserved. Owner associates Kim Min Ung with Creative Arts; no current person record exists, so use name-only attribution without a new biography.
 
 Owner confirms PCBWay Partner and Tuya Sponsor. General company sources: https://www.pcbway.com/project/sponsor/future-innovators-program.html and https://www.tuya.com/about (also https://www.tuya.com/contact). No terms or benefits inferred.
 
@@ -903,11 +903,11 @@ Azizbek Arzikulov matches existing `azizbek-arzikulov` / `azizbekdevuz`. Profile
 
 ## Public content evidence update — 2026-11-17
 
-- Owner confirms Azizbek as a founder, Arif Anzum as Staff and associated with Creative Arts, Myint Myat Aung with Embedded Systems, and Adalat Alizada with App Development.
+- Owner confirms Azizbek as a founder, Kim Min Ung as Staff and associated with Creative Arts, Myint Myat Aung with Embedded Systems, and Adalat Alizada with App Development.
 - [Daytona HackSprint Seoul](https://luma.com/daytonaseoul) supplies event context and date. The supplied event photo shows “1st Place LatchOps.” [LatchOps repository](https://github.com/azizbekdevuz/LatchOps) supplies project context.
 - [The GitHub Blog](https://github.blog/open-source/from-karaoke-terminals-to-ai-resumes-the-winners-of-githubs-for-the-love-of-code-challenge/) lists BuildIn in its hardware winners and publishes four prototype photos. [GitHub Community](https://github.com/orgs/community/discussions/166366) corroborates Prithwis’s win. The supplied screenshot is supplemental.
 - [Arduino on X](https://x.com/arduino/status/2006397902675980329) links to [Prithwis’s Tolkyn build guide](https://www.instructables.com/Tolkyn-Turning-Invisible-Rhythm-Into-Living-Archit/). This is a feature. Its date is reported in Korea Standard Time.
 
 ## Owner-confirmed assignments — 2026-11-20
 
-Choi Hyong Chan is a founder. Arif Anzum and Odina Yusupova lead Creative Arts. Staff includes Azizbek Arzikulov as Head of Security, Odina Yusupova for Business & Marketing, and Myint Myat Aung as Technical Assets Manager. The owner identifies Jaden as Myint Myat Aung and credits him alongside Prithwis for Tolkyn. The owner credits Ryan alongside Prithwis for BuildIn. Ryan has no matched person record, so his credit uses the supplied name without an invented profile. Four supplied LinkedIn URLs are recorded in contributors.ts.
+Choi Hyong Chan is a founder. Kim Min Ung and Odina Yusupova lead Creative Arts. Staff includes Azizbek Arzikulov as Head of Security, Odina Yusupova for Business & Marketing, and Myint Myat Aung as Technical Assets Manager. The owner identifies Jaden as Myint Myat Aung and credits him alongside Prithwis for Tolkyn. The owner credits Ryan alongside Prithwis for BuildIn. Ryan has no matched person record, so his credit uses the supplied name without an invented profile. Four supplied LinkedIn URLs are recorded in contributors.ts.

@@ -48,7 +48,7 @@ for (const locale of ["en", "ko"] as const) {
     await expect(page.locator(".pathway-map-board a")).toHaveCount(7);
     await page.locator('.pathway-map-board a[href="#creative-arts"]').click();
     await expect(page).toHaveURL(/#creative-arts$/);
-    await expect(page.locator("#creative-arts")).toContainText("Arif Anzum");
+    await expect(page.locator("#creative-arts")).toContainText("Kim Min Ung");
     await expect(page.locator("#embedded-systems")).toContainText("Myint Myat Aung");
     await expect(page.locator("#app-development")).toContainText("Adalat Alizada");
     await expect(page.locator("#software-engineering")).toBeVisible();

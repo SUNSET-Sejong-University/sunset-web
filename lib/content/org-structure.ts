@@ -14,7 +14,7 @@ import type { Contributor, LocalizedStrings } from "@/lib/content/types";
  * - Section Leads lead projects in their respective groups: stated by the
  *   project owner. Owner-confirmed (2026-10-16): Azizbek Arzikulov leads
  *   Full-Stack Development / Engineering. Owner-confirmed (2026-11-20):
- *   Arif Anzum and Odina Yusupova lead Creative Arts.
+ *   Kim Min Ung and Odina Yusupova lead Creative Arts.
  *   Other sections have no confirmed lead yet.
  * - Advisory Committee and Mentors: group names are owner-provided;
  *   no members or relationships have been confirmed yet.
@@ -61,11 +61,11 @@ export const orgGroups: readonly OrgGroup[] = [
       en: "Lead projects in their respective groups.",
       ko: "각자의 그룹에서 프로젝트를 이끕니다.",
     },
-    memberIds: ["azizbek-arzikulov", "odina-yusupova", "arif-anzum"],
+    memberIds: ["azizbek-arzikulov", "odina-yusupova", "kim-min-ung"],
     memberRoles: {
       "azizbek-arzikulov": { en: "Full Stack Web Development / Engineering", ko: "풀스택 웹 개발 / 엔지니어링" },
       "odina-yusupova": { en: "Creative Arts", ko: "크리에이티브 아트" },
-      "arif-anzum": { en: "Creative Arts", ko: "크리에이티브 아트" },
+      "kim-min-ung": { en: "Creative Arts", ko: "크리에이티브 아트" },
     },
   },
   {

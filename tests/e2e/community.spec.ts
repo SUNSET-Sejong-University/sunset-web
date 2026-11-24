@@ -75,7 +75,7 @@ for (const locale of ["en", "ko"] as const) {
     const leads = page.locator("#section-leads");
     const staff = page.locator("#staff");
     await expect(leads.getByRole("article")).toHaveCount(3);
-    for (const name of ["Odina Yusupova", "Arif Anzum"]) {
+    for (const name of ["Odina Yusupova", "Kim Min Ung"]) {
       const card = leads.getByRole("article").filter({ has: page.getByRole("heading", { name, exact: true }) });
       await expect(card.locator(".role")).toHaveText(locale === "en" ? "Creative Arts" : "크리에이티브 아트");
     }
@@ -87,7 +87,7 @@ for (const locale of ["en", "ko"] as const) {
     ] as const) {
       await expect(staff.getByRole("article").filter({ has: page.getByRole("heading", { name, exact: true }) }).locator(".role")).toHaveText(role);
     }
-    await expect(staff).not.toContainText("Arif Anzum");
+    await expect(staff).not.toContainText("Kim Min Ung");
     await expect(page.getByRole("heading", { name: locale === "en" ? "Contributors" : "기여자", exact: true })).toHaveCount(0);
     await expect(page.locator(".people-card-projects a[href*='/projects/']")).toHaveCount(0);
     for (const [id, url] of [
